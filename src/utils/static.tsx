@@ -5,7 +5,7 @@ export const routes = [
   },
   {
     name: "About us",
-    path: "/about",
+    path: "/about-us",
   },
   {
     name: "Services",
