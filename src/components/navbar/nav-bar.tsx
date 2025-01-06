@@ -7,7 +7,7 @@ import Button from "../ui/button/btn";
 
 export default function NavBar() {
   return (
-    <nav className="bg-white shadow-lg shadow-gray-200 ">
+    <nav className="bg-white border-b-2 shadow-md shadow-gray-700 ">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Image src={logo} alt="logo" />
         <div className="hidden cursor-pointer md:flex text-gray-700 space-x-6">

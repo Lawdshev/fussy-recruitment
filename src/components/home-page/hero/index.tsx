@@ -7,7 +7,7 @@ import Button from "../../ui/button/btn";
 
 function Index() {
   return (
-    <div className="bg-[#FFFCF5] w-screen">
+    <div className="bg-[#FFFCF5] w-screen py-8">
       <div className="grid grid-cols-2 px-8 container mx-auto">
         <div className="relative col-span-2 md:col-span-1 py-8 h-[calc(60vh-100px)]">
           <Image
