@@ -3,7 +3,7 @@ import floatingOne from "@/assets/hero/Vector.png";
 import floatingTwo from "@/assets/hero/Vector (1).png";
 import floatingThree from "@/assets/hero/Rectangle 1.png";
 import Image from "next/image";
-import Button from "../ui/button/btn";
+import Button from "../../ui/button/btn";
 
 function Index() {
   return (
