@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 interface ButtonProps {
     text: string;
     bgColor?: string;
@@ -7,6 +9,7 @@ interface ButtonProps {
     border?: string;
     size?: string;
     borderColor?: string;
+    icon?: React.ReactNode;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -17,14 +20,16 @@ const Button: React.FC<ButtonProps> = ({
     border = "border-none",
     borderColor = "border-black",
     size = "px-4 py-2 text-lg",
+    icon = null,
     onClick
 }) => {
     return (
         <button
             onClick={onClick}
-            className={`rounded-lg ${bgColor}  ${borderColor} ${textColor} ${border} ${size}`}
+            className={`rounded-lg flex items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size}`}
         >
             {text}
+            {icon}
         </button>
     );
 };

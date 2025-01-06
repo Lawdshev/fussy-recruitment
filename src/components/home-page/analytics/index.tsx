@@ -32,7 +32,7 @@ function Index() {
             </div>
           </div>
 
-          {/* Right Section */}
+          
           <div className="max-w-[652px] mx-auto text-center space-y-8">
             <h3 className="font-medium text-2xl sm:text-3xl text-black">
               Ready to Transform Your Recruitment or Nail Your Next Role?
