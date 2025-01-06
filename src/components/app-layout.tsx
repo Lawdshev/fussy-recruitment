@@ -10,7 +10,7 @@ const AppLayout: React.FC<IProp> = ({ children }) => {
   return (
     <div className="">
       <NavBar />
-      <main className="bg-white min-h-screen">
+      <main className="bg-white">
         {children}
       </main>
       <Footer />
