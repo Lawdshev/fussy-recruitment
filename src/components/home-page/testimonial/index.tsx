@@ -19,62 +19,64 @@ const testimonials = [
 ];
 
 function Testimonials() {
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    };
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
 
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-        );
-    };
-
-    return (
-        <div className="bg-[#FFFFFF] container mx-auto px-6 sm:px-12 lg:px-24 py-12 sm:py-16 lg:py-24 ">
-            <div className="text-center max-w-[990px] mx-auto mb-12">
-                <h2 className="text-2xl md:text-2xl font-semibold text-[#723A20]">
-                    Our Clients Trust Us
-                </h2>
-                <p className="text-lg md:text-lg font-normal text-[#1C1C1C] mt-4">
-                    Discover why businesses and professionals trust us to deliver exceptional results.
-                </p>
-            </div>
-
-
-            <div className="relative bg-[#E6F2F2] p-16 rounded-xl max-h-[401px] h-[401px] shadow-lg text-center max-w-[990px] mx-auto overflow-hidden"
-            >
-
-                <p className="text-lg text-[#0C0C0C] max-w-[654px] mx-auto  p-8 ">
-                    “{testimonials[currentIndex].text}”
-                </p>
-
-                <div>
-                    <div className="text-[#C5AA1E] text-2xl mt-2">
-                        {"★".repeat(5)}
-                    </div>
-                    <p className="font-medium text-[#242424]">{testimonials[currentIndex].author}</p>
-                </div>
-                <div className="absolute top-1/2 -translate-y-1/2 left-4">
-                    <button
-                        onClick={prevSlide}
-                        className="bg-[#FFFFFF] text-[#242424] w-12 p-2 rounded-md shadow hover:bg-gray-200"
-                    >
-                        <IoIosArrowBack className="text-center mx-auto text-lg" />
-                    </button>
-                </div>
-                <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                    <button
-                        onClick={nextSlide}
-                        className="bg-[#FFFFFF] text-[#242424] p-2  w-12 rounded-md shadow hover:bg-gray-200"
-                    >
-                        <IoIosArrowForward className="text-center mx-auto text-lg" />
-                    </button>
-                </div>
-            </div>
-        </div>
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+  };
+
+  return (
+    <div className="bg-[#FFFFFF] container mx-auto px-6 sm:px-12 lg:px-24 py-8 sm:py-16 lg:py-24">
+      <div className="text-center max-w-[990px] mx-auto mb-8 sm:mb-12">
+        <h2 className="text-xl sm:text-2xl font-semibold text-[#723A20]">
+          Our Clients Trust Us
+        </h2>
+        <p className="text-base sm:text-lg font-normal text-[#1C1C1C] mt-4">
+          Discover why businesses and professionals trust us to deliver
+          exceptional results.
+        </p>
+      </div>
+
+      <div className="relative bg-[#E6F2F2] p-8 sm:p-16 rounded-xl h-auto shadow-lg text-center max-w-[990px] mx-auto overflow-hidden">
+        <p className="text-base sm:text-lg text-[#0C0C0C] max-w-[654px] mx-auto p-4 sm:p-8">
+          “{testimonials[currentIndex].text}”
+        </p>
+
+        <div>
+          <div className="text-[#C5AA1E] text-xl sm:text-2xl mt-2">
+            {"★".repeat(5)}
+          </div>
+          <p className="font-medium text-[#242424]">
+            {testimonials[currentIndex].author}
+          </p>
+        </div>
+
+        <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4">
+          <button
+            onClick={prevSlide}
+            className="bg-[#FFFFFF] text-[#242424] w-8 sm:w-12 p-2 rounded-md shadow hover:bg-gray-200"
+          >
+            <IoIosArrowBack className="text-center mx-auto text-sm sm:text-lg" />
+          </button>
+        </div>
+        <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4">
+          <button
+            onClick={nextSlide}
+            className="bg-[#FFFFFF] text-[#242424] w-8 sm:w-12 p-2 rounded-md shadow hover:bg-gray-200"
+          >
+            <IoIosArrowForward className="text-center mx-auto text-sm sm:text-lg" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
+
 
 export default Testimonials;

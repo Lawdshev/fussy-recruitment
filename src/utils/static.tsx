@@ -21,7 +21,7 @@ export const routes = [
   },
   {
     name: "Contact Us",
-    path: "/contact",
+    path: "/contact-us",
   },
 ];
 export const servicesRoutes = [
