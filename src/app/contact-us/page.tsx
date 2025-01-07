@@ -6,7 +6,6 @@ import { BsTwitterX } from "react-icons/bs";
 import { PiPhoneCall } from "react-icons/pi";
 import { LuFacebook } from "react-icons/lu";
 import { SlSocialLinkedin } from 'react-icons/sl';
-import { FaStarOfLife } from "react-icons/fa6";
 import TextAreaField from '@/components/ui/button/textarea/textarea';
 import { CiLocationOn } from "react-icons/ci";
 import Button from '@/components/ui/button/btn';
@@ -33,30 +32,17 @@ const Page = () => {
       <div className="grid md:grid-cols-2 gap-12">
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <InputField
-              label='First Name'
-              icon={FaStarOfLife}
-            />
-            <InputField
-              label='Last Name'
-              icon={FaStarOfLife}
-            />
+            <InputField label="First Name" required />
+            <InputField label="Last Name" required />
           </div>
-          <InputField
-            label='Email'
-            icon={FaStarOfLife}
-          />
-          <InputField
-            type='tel'
-            label='Phone Number'
-          />
-          <TextAreaField
-            label='Message'
-          />
-          <Button text='Send Message'
-            bgColor='bg-[#000000]'
-            size='w-full py-2  text-lg'
-            textColor='text-[#FEFEFE]'
+          <InputField label="Email" required />
+          <InputField type="tel" label="Phone Number" />
+          <TextAreaField label="Message" />
+          <Button
+            text="Send Message"
+            bgColor="bg-[#000000]"
+            size="w-full py-2  text-lg"
+            textColor="text-[#FEFEFE]"
           />
         </form>
         <div>
@@ -70,8 +56,8 @@ const Page = () => {
         </div>
       </div>
       <div className="bg-[#FFF9EE] text-primary-text mt-12 p-6 rounded-xl shadow-md shadow-[#00000026]">
-        <div className="flex flex-col gap-6 sm:flex-row justify-between   text-center sm:text-left">
-          <div className="flex-1 mb-4 sm:mb-0">
+        <div className="flex flex-col gap-6 sm:flex-row justify-between text-center sm:text-left">
+          <div className=" mb-4 sm:mb-0 lg:max-w-[30%]">
             <p className="font-medium">Office Address</p>
             <div className="flex items-start my-3 gap-2">
               <CiLocationOn className="text-[#007474] text-xl mt-1 shrink-0" />
@@ -80,32 +66,37 @@ const Page = () => {
               </p>
             </div>
           </div>
-          <div className="flex-1 mb-4  sm:mb-0 ">
+          <div className="mb-4  sm:mb-0 ">
             <p className="font-medium mb-3">Phone Number</p>
             <div className="flex items-center  my-3 gap-2">
               <PiPhoneCall className="text-[#34C759]  text-xl shrink-0" />
-              <p className="text-primary-text">01702 842 942</p>
+              <a href="tel:01702842942" className="text-primary-text">
+                01702 842 942
+              </a>
             </div>
           </div>
-          <div className="flex-1 mb-4  sm:mb-0">
+          <div className=" mb-4  sm:mb-0 ">
             <p className="font-medium mb-3 ">Email</p>
-            <div className="flex items-center  my-3 gap-2">
+            <div className="flex items-center hover:underline  my-3 gap-2">
               <HiOutlineMail className="text-[#007AFF] text-xl shrink-0" />
-              <p className=" text-primary-text">
+              <a
+                href="mailto:Recruitment@fussygroup.co.uk"
+                className=" text-primary-text"
+              >
                 Recruitment@fussygroup.co.uk
-              </p>
+              </a>
             </div>
           </div>
           <div>
             <p className="font-medium mb-3">Social Media</p>
             <div className="w-full lg:w-auto flex space-x-1 justify-center lg:justify-end mt-4 lg:mt-0">
-              <button className="w-8 h-8 flex items-center justify-center bg-white shadow-lg rounded-full">
+              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <BsTwitterX className="text-black" />
               </button>
-              <button className="w-8 h-8 flex items-center justify-center bg-white rounded-full">
+              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <LuFacebook className="text-[#1877F2]" />
               </button>
-              <button className="w-8 h-8 flex items-center justify-center bg-white rounded-full">
+              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <SlSocialLinkedin className="text-[#0077B5]" />
               </button>
             </div>
@@ -113,7 +104,6 @@ const Page = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
