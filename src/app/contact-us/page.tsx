@@ -1,18 +1,22 @@
 import PageTitle from '@/components/shared/page-title';
+import InputField from '@/components/ui/button/input/input';
 import React from 'react';
-import { BsTwitter } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
+import { HiOutlineMail } from "react-icons/hi";
+import { BsTwitterX } from "react-icons/bs";
+import { PiPhoneCall } from "react-icons/pi";
+import { LuFacebook } from "react-icons/lu";
 import { SlSocialLinkedin } from 'react-icons/sl';
+import { FaStarOfLife } from "react-icons/fa6";
+import TextAreaField from '@/components/ui/button/textarea/textarea';
+import { CiLocationOn } from "react-icons/ci";
+import Button from '@/components/ui/button/btn';
 
 const Page = () => {
   return (
     <div className="container mx-auto px-6 lg:px-44 py-12">
-      {/* Contact Us Header */}
       <div className="text-center mb-12">
         <PageTitle title="Contact Us" />
       </div>
-
-      {/* Intro Section */}
       <div className="bg-[#F6F6F6] border border-[#004646] p-6 xl:p-12 mb-12 rounded-xl">
         <h3 className="text-lg font-medium text-center text-primary-text">
           We&apos;re Here to Meet Your Healthcare Staffing Needs
@@ -26,50 +30,38 @@ const Page = () => {
           align with your skills and career goals.
         </p>
       </div>
-
-      {/* Contact Form and Map Section */}
       <div className="grid md:grid-cols-2 gap-12">
-        {/* Contact Form */}
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="First Name *"
-              className="border border-gray-300 p-2 w-full"
+            <InputField
+              label='First Name'
+              icon={FaStarOfLife}
             />
-            <input
-              type="text"
-              placeholder="Last Name *"
-              className="border border-gray-300 p-2 w-full"
+            <InputField
+              label='Last Name'
+              icon={FaStarOfLife}
             />
           </div>
-          <input
-            type="email"
-            placeholder="Email *"
-            className="border border-gray-300 p-2 w-full"
+          <InputField
+            label='Email'
+            icon={FaStarOfLife}
           />
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            className="border border-gray-300 p-2 w-full"
+          <InputField
+            type='tel'
+            label='Phone Number'
           />
-          <textarea
-            placeholder="Message"
-            rows={4}
-            className="border border-gray-300 p-2 w-full"
-          ></textarea>
-          <button
-            type="submit"
-            className="bg-black text-white px-6 py-2 rounded-md w-full"
-          >
-            Send Message
-          </button>
+          <TextAreaField
+            label='Message'
+          />
+          <Button text='Send Message'
+            bgColor='bg-[#000000]'
+            size='w-full py-2  text-lg'
+            textColor='text-[#FEFEFE]'
+          />
         </form>
-
-        {/* Map Section */}
         <div>
           <iframe
-            className="w-full h-full rounded-xl"
+            className="w-full h-full rounded-2xl"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000.000000!2d0.000000!3d0.000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzAwLjAiTiAxMDDCsDAwJzAwLjAiRQ!5e0!3m2!1sen!2sus!4v0000000000000"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -77,43 +69,51 @@ const Page = () => {
           ></iframe>
         </div>
       </div>
-
-      {/* Contact Information Section */}
       <div className="bg-[#FFF9EE] text-primary-text mt-12 p-6 rounded-xl shadow-md shadow-[#00000026]">
-        <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
-          <div className="mb-4 sm:mb-0">
+        <div className="flex flex-col gap-6 sm:flex-row justify-between   text-center sm:text-left">
+          <div className="flex-1 mb-4 sm:mb-0">
             <p className="font-medium">Office Address</p>
-            <p className="text-sm text-gray-600">
-              Harrier House, Aviation Way, Southend, Essex. SS2 6UN
-            </p>
+            <div className="flex items-start my-3 gap-2">
+              <CiLocationOn className="text-[#007474] text-xl mt-1 shrink-0" />
+              <p className="text-primary-text">
+                Harrier House, Aviation Way, Southend, Essex. SS2 6UN
+              </p>
+            </div>
           </div>
-          <div className="mb-4 sm:mb-0">
-            <p className="font-medium">Phone Number</p>
-            <p className="text-sm text-gray-600">01702 842 942</p>
+          <div className="flex-1 mb-4  sm:mb-0 ">
+            <p className="font-medium mb-3">Phone Number</p>
+            <div className="flex items-center  my-3 gap-2">
+              <PiPhoneCall className="text-[#34C759]  text-xl shrink-0" />
+              <p className="text-primary-text">01702 842 942</p>
+            </div>
           </div>
-          <div className="mb-4 sm:mb-0">
-            <p className="font-medium">Email</p>
-            <p className="text-sm text-gray-600">
-              Recruitment@fussygroup.co.uk
-            </p>
+          <div className="flex-1 mb-4  sm:mb-0">
+            <p className="font-medium mb-3 ">Email</p>
+            <div className="flex items-center  my-3 gap-2">
+              <HiOutlineMail className="text-[#007AFF] text-xl shrink-0" />
+              <p className=" text-primary-text">
+                Recruitment@fussygroup.co.uk
+              </p>
+            </div>
           </div>
           <div>
-            <p className="font-medium">Social Media</p>
-            <div className="flex space-x-4 justify-center sm:justify-start">
-              <a href="#" className="text-gray-600">
-                <BsTwitter />
-              </a>
-              <a href="#" className="text-gray-600">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="text-gray-600">
-                <SlSocialLinkedin />
-              </a>
+            <p className="font-medium mb-3">Social Media</p>
+            <div className="w-full lg:w-auto flex space-x-1 justify-center lg:justify-end mt-4 lg:mt-0">
+              <button className="w-8 h-8 flex items-center justify-center bg-white shadow-lg rounded-full">
+                <BsTwitterX className="text-black" />
+              </button>
+              <button className="w-8 h-8 flex items-center justify-center bg-white rounded-full">
+                <LuFacebook className="text-[#1877F2]" />
+              </button>
+              <button className="w-8 h-8 flex items-center justify-center bg-white rounded-full">
+                <SlSocialLinkedin className="text-[#0077B5]" />
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 
