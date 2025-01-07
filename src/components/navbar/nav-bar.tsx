@@ -12,7 +12,7 @@ export default function NavBar() {
         <Image src={logo} alt="logo" />
         <div className="hidden cursor-pointer md:flex text-gray-700 space-x-6">
           {routes.map((route) => (
-            <NavBarLink route={route} />
+            <NavBarLink key={route.name} route={route} />
           ))}
         </div>
         <div className="flex gap-3">

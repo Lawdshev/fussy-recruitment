@@ -30,9 +30,7 @@ function Index() {
                 Happy Users
               </p>
             </div>
-          </div>
-
-          
+          </div>   
           <div className="max-w-[652px] mx-auto text-center space-y-8">
             <h3 className="font-medium text-2xl sm:text-3xl text-black">
               Ready to Transform Your Recruitment or Nail Your Next Role?
@@ -47,7 +45,7 @@ function Index() {
             <Button
               text={"Contact Us"}
               bgColor="bg-black"
-              size="px-4 py-2 font-medium"
+              size="px-4 py-2 font-medium mx-auto md:mx-0"
               textColor="text-white"
             />
           </div>
