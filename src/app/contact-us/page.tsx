@@ -1,6 +1,8 @@
+"use client";
+
 import PageTitle from "@/components/shared/page-title";
 import InputField from "@/components/ui/button/input/input";
-import React from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsTwitterX } from "react-icons/bs";
 import { PiPhoneCall } from "react-icons/pi";
@@ -9,8 +11,53 @@ import { SlSocialLinkedin } from "react-icons/sl";
 import TextAreaField from "@/components/ui/button/textarea/textarea";
 import { CiLocationOn } from "react-icons/ci";
 import Button from "@/components/ui/button/btn";
+import { fetchAPI } from "@/utils/fetchApi";
 
 const Page = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  console.log(status);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response = await fetchAPI<{ message: string }>("api/contact", {
+        method: "POST",
+        body: formData,
+      });
+      setIsLoading(false);
+      setStatus(response.message || "Message sent successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus("Failed to send message. Please try again later.");
+      setIsLoading(false);
+      console.log(error);
+    }
+  };
+
   return (
     <div className="container mx-auto px-6 lg:px-44 py-12">
       <div className="text-center mb-12">
@@ -30,16 +77,45 @@ const Page = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 gap-12">
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <InputField label="First Name" required />
-            <InputField label="Last Name" required />
+            <InputField
+              label="First Name"
+              required
+              value={formData.firstName}
+              name="firstName"
+              onChange={handleChange}
+            />
+            <InputField
+              label="Last Name"
+              required
+              value={formData.lastName}
+              name="lastName"
+              onChange={handleChange}
+            />
           </div>
-          <InputField label="Email" required />
-          <InputField type="tel" label="Phone Number" />
-          <TextAreaField label="Message" />
+          <InputField
+            label="Email"
+            required
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <InputField
+            type="tel"
+            label="Phone Number"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+          />
+          <TextAreaField
+            label="Message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+          />
           <Button
-            text="Send Message"
+            text={isLoading ? "sending..." : "Send Message"}
             bgColor="bg-[#000000]"
             size="w-full py-2  text-lg"
             textColor="text-[#FEFEFE]"
