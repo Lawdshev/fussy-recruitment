@@ -1,8 +1,9 @@
-import PageTitle from '@/components/shared/page-title';
-import React from 'react';
-import { BsTwitter } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
-import { SlSocialLinkedin } from 'react-icons/sl';
+import { TextAreaInput, TextInput } from "@/components/form/inputs";
+import PageTitle from "@/components/shared/page-title";
+import React from "react";
+import { BsTwitter } from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
+import { SlSocialLinkedin } from "react-icons/sl";
 
 const Page = () => {
   return (
@@ -32,32 +33,13 @@ const Page = () => {
         {/* Contact Form */}
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="First Name *"
-              className="border border-gray-300 p-2 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Last Name *"
-              className="border border-gray-300 p-2 w-full"
-            />
+            <TextInput label="First Name" required type="text" />
+            <TextInput label="Last Name" required type="text" />
           </div>
-          <input
-            type="email"
-            placeholder="Email *"
-            className="border border-gray-300 p-2 w-full"
-          />
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            className="border border-gray-300 p-2 w-full"
-          />
-          <textarea
-            placeholder="Message"
-            rows={4}
-            className="border border-gray-300 p-2 w-full"
-          ></textarea>
+          <TextInput label="Email" required type="email" />
+          <TextInput label="Phone Number" type="tel" />
+          <TextAreaInput label="Message" rows={6} />
+
           <button
             type="submit"
             className="bg-black text-white px-6 py-2 rounded-md w-full"
@@ -118,4 +100,3 @@ const Page = () => {
 };
 
 export default Page;
-
