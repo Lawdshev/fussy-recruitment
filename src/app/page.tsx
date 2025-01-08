@@ -5,16 +5,15 @@ import Body from "@/components/home-page/body";
 import Testimonials from "@/components/home-page/testimonial";
 import Contact from "@/components/home-page/contact";
 
-
 export default function Home() {
   return (
     <div className="">
       <Hero />
-      <Analytics/>
-      <Offer/>
-      <Body/>
-   <Testimonials/>
-   <Contact/>
+      <Analytics />
+      <Offer />
+      <Body />
+      <Testimonials />
+      <Contact />
     </div>
   );
 }
