@@ -18,7 +18,7 @@ const CareSetting = () => {
         <section className="bg-[#FFFCF5] py-12 px-8">
             <div className="max-w-6xl mx-auto text-center">
                 <PageTitle title="Care Settings We Offer" />
-                <div className="grid grid-cols-1 sm:grid-cols-2 mt-12 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 mt-12 md:grid-cols-4 gap-8 px-8 sm:px-0 ">
                     {settings.map((setting, index) => (
                         <div
                             key={index}
