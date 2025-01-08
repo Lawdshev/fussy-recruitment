@@ -38,8 +38,7 @@ function Testimonials() {
           Our Clients Trust Us
         </h2>
         <p className="text-base sm:text-lg font-normal text-[#1C1C1C] mt-4">
-          Discover why businesses and professionals trust us to deliver
-          exceptional results.
+          Discover why businesses and professionals trust us to deliver exceptional results.
         </p>
       </div>
 
@@ -52,9 +51,7 @@ function Testimonials() {
           <div className="text-[#C5AA1E] text-xl sm:text-2xl mt-2">
             {"★".repeat(5)}
           </div>
-          <p className="font-medium text-[#242424]">
-            {testimonials[currentIndex].author}
-          </p>
+          <p className="font-medium text-[#242424]">{testimonials[currentIndex].author}</p>
         </div>
 
         <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4">
