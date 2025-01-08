@@ -15,8 +15,8 @@ const Hero = () => {
       <div className="container mx-auto pt-12  px-24">
         <PageTitle title="Temporary Staffing" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-          <div className="order-2 md:order-1 col-span-1" >
-            <p className="text-primary-text">
+          <div className="order-2 mt-10 md:order-1 col-span-1" >
+            <p className="text-primary-text leading-[30px]">
               At Fussy Recruitment, we specialise in providing immediate,
               short-term staffing solutions tailored to healthcare providers'
               diverse needs. Our temporary staffing services are designed to
@@ -36,15 +36,15 @@ const Hero = () => {
           <div className="order-1 md:order-1 col-span-1  flex items-center justify-center">
             <Image src={malenurses} alt="healthcare professionals" className="rounded-2xl" />
           </div>
-          <div className="order-2 md:order-2 col-span-1" >
-            <p className="text-primary-text">
+          <div className="order-2 mt-10 md:order-2 col-span-1" >
+            <p className="text-primary-text leading-[30px]">
               With Fussy Recruitment, you can trust that every temporary staff member is fully vetted, trained, and compliant with industry regulations. This means you can focus on delivering excellent care while we handle the staffing logistics. Whether you need coverage for a single shift or ongoing support, our temporary staffing solutions are here to help you navigate the complexities of healthcare staffing with ease and confidence
             </p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-          <div className="order-2 md:order-1 col-span-1" >
-            <p className="text-primary-text">
+          <div className="order-2 mt-10 md:order-1 col-span-1" >
+            <p className="text-primary-text leading-[30px]">
               Healthcare settings often face unexpected staffing challenges, from sudden increases in patient demand to staff absences. Our flexible, temporary staffing solutions allow you to fill shifts quickly, maintain care continuity, and uphold the highest service standards without compromising quality. Our team works closely with you to understand your specific needs, ensuring that the professionals we provide are not only skilled but also a perfect fit for your care environment
             </p>
           </div>
@@ -61,7 +61,7 @@ const Hero = () => {
             <h1 className="text-xl sm:text-2xl font-medium text-[#0C0C0C] leading-snug">
               Let us help you achieve your staffing goals
             </h1>
-            <p className="font-normal text-[#0C0C0C] mt-4">
+            <p className="font-normal leading-[30px] text-[#0C0C0C] mt-4">
               Partner with us to find the right talent, streamline recruitment, and build a stronger team
             </p>
             <div className="flex items-center justify-center lg:justify-start mt-6">
