@@ -37,12 +37,12 @@ const NavBarLink: React.FC<IRoute> =({route}) => {
           </div>
         )}
         {showSubRoutes && route.subRoutes && (
-          <div className="absolute top-[220%] rounded-lg transform -translate-x-1/4 bg-white shadow-md py-2 w-48 xl:w-[292px]">
+          <div className="absolute top-[220%] z-50 space-y-4 rounded-lg transform -translate-x-1/4 bg-white py-6 w-48 xl:w-[292px] shadow-[0_0_10px_0_rgba(0,0,0,0.2)]">
             {route.subRoutes.map((subRoute) => (
               <Link
                 key={subRoute.name}
                 href={subRoute.path}
-                className="block px-4 py-2 text-sm text-primary-text font-medium hover:text-opacity-65"
+                className="block w-fit mx-4 px-2 text-sm text-primary-text hover:border-r-2 hover:border-l-2 hover:border-[#B3831C] font-medium hover:text-opacity-65"
               >
                 {subRoute.name}
               </Link>

@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
         <button
             onClick={onClick}
-            className={`rounded-lg flex items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size}`}
+            className={`rounded-lg flex justify-center items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size}`}
         >
             {text}
             {icon}
