@@ -5,9 +5,9 @@ import frontviewblacknurse from "@/assets/bodyframe/frontviewblacknurse.png";
 import nerddoctors from "@/assets/bodyframe/nerddoctors.png";
 import happydoctors from "@/assets/bodyframe/happydoctors.png";
 import CareSettings from "@/components/shared/caresettings/care-setting";
-import Button from "@/components/ui/button/btn";
 import objects from "@/assets/bodyframe/OBJECTS.png";
 import ClientStory from "@/components/shared/client-story/client-story";
+import SectionWithImage from "@/components/goals/goal";
 
 const page = () => {
   return (
@@ -47,29 +47,16 @@ const page = () => {
       </div>
       <CareSettings />
       <ClientStory story={`“The quality of staff provided by Fussy Recruitment is truly exceptional. Every team member brings a kind and caring nature to our residents, exhibiting both patience and compassion. Their knowledge and training are top-notch, ensuring that they not only meet but exceed the high standards of care we strive to maintain. The staff are always polite, courteous, and respectful, which significantly enhances the experience for our residents”`} name="Healthcare Organisation" />
-      <div className="bg-[#FDC653] px-6 sm:px-12 md:px-16 lg:px-20">
-        <div className="container flex flex-col lg:flex-row items-center justify-between lg:justify-center mx-auto pt-8 sm:pt-12 lg:pt-18 lg:gap-12">
-          <div className="text-center lg:max-w-[521px]">
-            <h1 className="text-xl sm:text-2xl font-medium text-[#0C0C0C] leading-snug">
-              Let us help you achieve your staffing goals
-            </h1>
-            <p className="font-normal leading-[30px] text-[#0C0C0C] mt-4">
-              With Fussy Recruitment, you can be confident that your permanent staffing needs are handled with the utmost care and precision.
-            </p>
-            <div className="flex items-center justify-center lg:justify-start mt-6">
-              <Button
-                text="Contact Us"
-                bgColor="bg-[#000000]"
-                size="px-6 py-2 font-normal mx-auto"
-                textColor="text-[#FEFEFE]"
-              />
-            </div>
-          </div>
-          <div className="mt-8 lg:mt-0 lg:max-w-[50%] flex justify-center">
-            <Image src={objects} alt="Healthcare Professionals" />
-          </div>
-        </div>
-      </div>
+      <SectionWithImage buttonBgColor="bg-[#000000]"
+        buttonSize="px-3 py-2 "
+        buttonText="Contact Us"
+        buttonTextColor="text-white"
+        description="With Fussy Recruitment, you can be confident that your permanent staffing needs are handled with the utmost care and precision."
+        imageAlt="health professionals"
+        imageSrc={objects}
+        title="Let us help you achieve your staffing goals"
+        containerBgColor="bg-[#FDC653]"
+      />
     </div>
   );
 };
