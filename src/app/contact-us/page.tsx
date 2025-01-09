@@ -12,6 +12,7 @@ import TextAreaField from "@/components/ui/button/textarea/textarea";
 import { CiLocationOn } from "react-icons/ci";
 import Button from "@/components/ui/button/btn";
 import { fetchAPI } from "@/utils/fetchApi";
+import SuccessModal from "@/components/modals/successModal";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ const Page = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,6 +44,7 @@ const Page = () => {
         method: "POST",
         body: formData,
       });
+      setIsModalOpen(true);
       setIsLoading(false);
       setStatus(response.message || "Message sent successfully!");
       setFormData({
@@ -57,7 +60,7 @@ const Page = () => {
       console.log(error);
     }
   };
-
+  const closeModal = () => setIsModalOpen(false);
   return (
     <div className="container mx-auto px-6 lg:px-44 py-12">
       <div className="text-center mb-12">
@@ -115,6 +118,7 @@ const Page = () => {
             onChange={handleChange}
           />
           <Button
+            disabled={isLoading}
             text={isLoading ? "sending..." : "Send Message"}
             bgColor="bg-[#000000]"
             size="w-full py-2  text-lg"
@@ -179,6 +183,7 @@ const Page = () => {
           </div>
         </div>
       </div>
+      <SuccessModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 };
