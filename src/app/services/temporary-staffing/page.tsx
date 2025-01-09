@@ -18,7 +18,7 @@ const Page = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 py-12">
           <div className="order-2 lg:order-1 col-span-1 mt-10 lg:mt-0 flex items-center justify-center">
             <p className="text-primary-text leading-[30px]">
-              At Fussy Recruitment, we specialise in providing immediate, short-term staffing solutions tailored to healthcare providers' diverse needs. Our temporary staffing services are designed to ensure you have access to qualified healthcare professionals whenever and wherever you need them. Whether managing a care home, housing with care, children's services, specialist care units, live-in care, NHS facilities, or home care, our extensive network of pre-screened and compliant candidates is ready to step in immediately.
+              At Fussy Recruitment, we specialise in providing immediate, short-term staffing solutions tailored to healthcare providers&apos; diverse needs. Our temporary staffing services are designed to ensure you have access to qualified healthcare professionals whenever and wherever you need them. Whether managing a care home, housing with care, children&apos;s services, specialist care units, live-in care, NHS facilities, or home care, our extensive network of pre-screened and compliant candidates is ready to step in immediately.
             </p>
           </div>
           <div className="order-1 lg:order-2 col-span-1 flex items-center justify-center">
