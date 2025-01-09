@@ -10,7 +10,6 @@ function ServiceOffered() {
     <div className="bg-white py-12">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-8">
-          {/* Text and Offer Section */}
           <div className="space-y-4 order-2 lg:order-1 md:px-4">
             <h2 className="text-center lg:text-left text-2xl lg:text-2xl font-semibold text-[#723A20]">
               Comprehensive Healthcare Staffing Solutions
@@ -76,8 +75,6 @@ function ServiceOffered() {
               />
             </div>
           </div>
-
-          {/* Image Section */}
           <div className="order-1 lg:order-2">
             <Image
               src={blacknurse}
