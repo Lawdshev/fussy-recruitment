@@ -45,7 +45,7 @@ function Index() {
             <Button
               text={"Contact Us"}
               bgColor="bg-black"
-              size="px-4 py-2 font-medium mx-auto md:mx-0"
+              size="px-4 py-2 font-medium mx-auto lg:mx-0"
               textColor="text-white"
             />
           </div>

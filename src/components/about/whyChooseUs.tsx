@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
     <div className="bg-white py-12 px-4">
       <div className="container mx-auto">
         <PageTitle title="Why Choose Us" />
-        <p className="text-center text-lg text-primary-text mt-12 w-full md:w-[60%] lg:w-[45%] mx-auto">
+        <p className="text-center text-lg text-primary-text mt-12 w-full md:w-[70%] xl:w-[45%] mx-auto">
           We recognise the unique challenges of sourcing and managing contingent
           roles in the healthcare sector. We offer award-winning workforce
           solutions designed to fit your budget and priorities.
