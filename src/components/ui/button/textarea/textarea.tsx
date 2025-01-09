@@ -5,12 +5,14 @@ interface TextAreaFieldProps
   label?: string;
   rows?: number;
   required?: boolean;
+  className?: string;
 }
 
 const TextAreaField: React.FC<TextAreaFieldProps> = ({
   label,
   rows = 4,
   required = false,
+  className,
   ...rest
 }) => {
   return (
@@ -23,7 +25,7 @@ const TextAreaField: React.FC<TextAreaFieldProps> = ({
         rows={rows}
         required={required}
         {...rest}
-        className="border rounded-lg border-[#A7A7A9] p-6 w-full focus:outline-none focus:ring-2 focus:ring-black"
+        className={`${className} border text-black rounded-lg border-[#A7A7A9] p-6 w-full focus:outline-none focus:ring-2 focus:ring-black`}
       ></textarea>
     </div>
   );

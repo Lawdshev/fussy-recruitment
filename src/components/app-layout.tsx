@@ -8,7 +8,7 @@ interface IProp {
 
 const AppLayout: React.FC<IProp> = ({ children }) => {
   return (
-    <div className="">
+    <div className="relative">
       <NavBar />
       <main className="bg-white">
         {children}

@@ -34,8 +34,6 @@ const Page = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log(status);
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -139,7 +137,7 @@ const Page = () => {
         <div className="flex flex-col gap-6 sm:flex-row justify-between text-center sm:text-left">
           <div className=" mb-4 sm:mb-0 lg:max-w-[30%]">
             <p className="font-medium">Office Address</p>
-            <div className="flex items-start my-3 gap-2">
+            <div className="flex items-start justify-center my-3 md:gap-2">
               <CiLocationOn className="text-[#007474] text-xl mt-1 shrink-0" />
               <p className="text-primary-text">
                 Harrier House, Aviation Way, Southend, Essex. SS2 6UN
@@ -148,16 +146,16 @@ const Page = () => {
           </div>
           <div className="mb-4  sm:mb-0 ">
             <p className="font-medium mb-3">Phone Number</p>
-            <div className="flex items-center  my-3 gap-2">
+            <div className="flex items-center justify-center  my-3 gap-2">
               <PiPhoneCall className="text-[#34C759]  text-xl shrink-0" />
               <a href="tel:01702842942" className="text-primary-text">
                 01702 842 942
               </a>
             </div>
           </div>
-          <div className=" mb-4  sm:mb-0 ">
+          <div className=" mb-4  sm:mb-0">
             <p className="font-medium mb-3 ">Email</p>
-            <div className="flex items-center hover:underline  my-3 gap-2">
+            <div className="flex items-center justify-center hover:underline text-center  my-3 gap-2 ">
               <HiOutlineMail className="text-[#007AFF] text-xl shrink-0" />
               <a
                 href="mailto:Recruitment@fussygroup.co.uk"

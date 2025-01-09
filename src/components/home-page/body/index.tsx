@@ -5,7 +5,6 @@ import Group11 from "@/assets/hero/Group11.png"
 import Button from '@/components/ui/button/btn'
 import { FaArrowRight } from "react-icons/fa";
 
-
 function Index() {
   return (
     <div className="bg-[#FFF6ED] pt-6 md:pt-12">
@@ -22,7 +21,7 @@ function Index() {
           <div className="flex justify-center">
             <Image src={Group14} alt="Healthcare Professionals" />
           </div>
-          <div className="bg-[#0C0C0C] w-full mx-auto md:w-[528px] lg:mx-0 mt-6 lg:mt-24 h-auto md:h-[320px] text-[#FFFFFF] p-8 rounded-lg">
+          <div className="bg-[#0C0C0C] w-full mx-auto md:w-[528px] lg:w-full xl:w-[528px] lg:mx-0 mt-6 lg:mt-24 h-auto md:h-[320px] text-[#FFFFFF] p-8 lg:p-6 xl:p-8 rounded-lg">
             <h3 className="text-xl md:text-2xl font-medium mb-4">
               I am a healthcare professional
             </h3>
@@ -42,7 +41,7 @@ function Index() {
           </div>
         </div>
         <div className="grid gap-12 lg:grid-cols-2 pb-12 items-center">
-          <div className="bg-[#0C0C0C] order-2 md:order-1 w-full mx-auto md:w-[528px] lg:mx-0 mt-6 lg:mt-24 h-auto md:h-[320px] text-[#FFFFFF] p-8 rounded-lg">
+          <div className="bg-[#0C0C0C] order-2 md:order-1 w-full mx-auto md:w-[528px] lg:w-full xl:w-[528px] lg:mx-0 mt-6 xl:mt-24 h-auto md:h-[320px] text-[#FFFFFF] p-8 lg:p-6 xl:p-8 rounded-lg">
             <h3 className="text-xl md:text-2xl font-medium mb-4">
               I am a healthcare organisation
             </h3>
