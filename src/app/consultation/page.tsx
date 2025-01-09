@@ -13,7 +13,7 @@ function Page() {
           <PageTitle title="Consultation" />
         </div>
         <div className="text-center text-primary-text flex flex-col gap-y-4">
-          <h3 className="text-[20px] font-medium leading-7">
+          <h3 className="text-[20px] font-medium leading-7 ">
             Request Healthcare Staffing Solutions
           </h3>
           <p className="">Let Us Help You Find the Right Professionals</p>
@@ -29,7 +29,7 @@ function Page() {
         <div className="container mx-auto px-6 lg:px-[7.5em] ">
           <div className="grid md:grid-cols-3 md:gap-[5.5rem] items-center mb-[5.5rem]">
             <div className="text-left">
-              <p className="text-sm leading-[1.5em]  ">
+              <p className="text-sm leading-[1.5em] text-primary-text ">
                 {` Book your free consultation today and discover how Fussy
                 Recruitment can transform your staffing approach. Let's work
                 together to ensure your care standards are met with the highest
@@ -50,7 +50,7 @@ function Page() {
             </div>
 
             <div className="text-left">
-              <p className="text-sm leading-[1.5em] ">
+              <p className="text-sm leading-[1.5em] text-primary-text ">
                 Ready to improve your healthcare staffing? Our consultation
                 service is the perfect starting point. At Fussy Recruitment, we
                 offer personalised consultations to understand your unique needs
@@ -72,7 +72,7 @@ function Page() {
             </div>
 
             <div className="">
-              <p className="text-sm leading-[1.5em]">
+              <p className="text-sm leading-[1.5em] text-primary-text">
                 {` Whether you're struggling with staffing shortages, looking for
                 specialised care professionals, or planning to optimise your
                 workforce management, our experts are here to help. We take the
