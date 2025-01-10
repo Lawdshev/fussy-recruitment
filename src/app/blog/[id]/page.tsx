@@ -71,7 +71,7 @@ const Page: React.FC<IProps> = ({ params }) => {
                                         {index + 1}. {list.title}
                                     </h3>
                                     <p className="text-[#09090A] leading-[28px] lg:leading-[32px]">
-                                        {list.content}
+                                        {list.contents}
                                     </p>
                                 </div>
                             ))}
