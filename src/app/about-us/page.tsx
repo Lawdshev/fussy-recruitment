@@ -1,3 +1,4 @@
+"use client"
 import Hero from "@/components/about/hero";
 import React from "react";
 import Mission from "@/components/about/mission";

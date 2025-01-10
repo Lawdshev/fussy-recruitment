@@ -10,6 +10,7 @@ interface ButtonProps {
   borderColor?: string;
   icon?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,10 +23,12 @@ const Button: React.FC<ButtonProps> = ({
   icon = null,
   type = "submit",
   onClick,
+  disabled,
 }) => {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       type={type}
       className={`rounded-lg flex justify-center items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size}`}
     >
