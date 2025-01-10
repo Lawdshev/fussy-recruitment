@@ -34,16 +34,15 @@ const Page: React.FC<IProps> = ({ params }) => {
                 {blog.mainTitle}
             </h1>
             <div className="flex flex-col lg:flex-row items-start gap-8">
-                <div className="lg:w-1/3">
+                <div className="rounded-lg">
                     <Image
                         src={blog.image || ""}
                         alt={blog.alt || ""}
-                        className="rounded-lg object-cover w-full"
                         priority
                     />
                 </div>
                 <div className="lg:w-2/3">
-                    <p className="text-[#09090A] mt-12 leading-[32px] lg:leading-[32px]">
+                    <p className="text-[#09090A] mt-6 leading-[32px] lg:leading-[32px]">
                         {blog.introduction}
                     </p>
                 </div>
