@@ -23,7 +23,7 @@ const SuccessModal = ({ isOpen, onClose }: SuccessModalProps) => {
           <span className="text-green-500 text-3xl">
             <BsCheckCircleFill />
           </span>
-          <h2 className="text-xl font-semibold">Submission Successful</h2>
+          <h2 className="text-xl text-[#151515] font-semibold">Submission Successful</h2>
         </div>
         <div className="mx-auto px-4 lg:px-12 mb-12">
           <p className="mt-4 text-gray-600 text-center">

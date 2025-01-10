@@ -13,6 +13,7 @@ import { CiLocationOn } from "react-icons/ci";
 import Button from "@/components/ui/button/btn";
 import { fetchAPI } from "@/utils/fetchApi";
 import SuccessModal from "@/components/modals/successModal";
+import ErrorModal from "@/components/modals/errorModal";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openError,setOpenError]=useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -56,6 +58,7 @@ const Page = () => {
       setStatus("Failed to send message. Please try again later.");
       setIsLoading(false);
       console.log(error);
+      setOpenError(true);
     }
   };
   const closeModal = () => setIsModalOpen(false);
@@ -182,6 +185,8 @@ const Page = () => {
         </div>
       </div>
       <SuccessModal isOpen={isModalOpen} onClose={closeModal} />
+      <ErrorModal isOpen={openError}
+      onClose={()=>{setOpenError(false)}}/>
     </div>
   );
 };

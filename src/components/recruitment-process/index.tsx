@@ -12,7 +12,7 @@ function Index() {
                   <h4 className="text-lg text-primary-text mb-3 font-medium">Simplify Your Recruitment with Tailored RPO Solutions</h4>
                   <p className="text-primary-text leading-[30px]">
                       At Fussy Recruitment, our Recruitment Process Outsourcing (RPO) service is designed to take the hassle out of your recruitment process. By partnering with us, you can delegate all or part of your hiring activities to our expert team, gaining the benefits of increased flexibility, efficiency, and cost savings while retaining control over crucial decisions.
-                      With over 20 years of experience in healthcare and social care recruitment, we understand the industry's complexities and compliance requirements. Our RPO service is not just about filling roles—it's about delivering suitable candidates who align with your business goals and culture.
+                      With over 20 years of experience in healthcare and social care recruitment, we understand the industry&apos;s complexities and compliance requirements. Our RPO service is not just about filling roles—it&apos;s about delivering suitable candidates who align with your business goals and culture.
                   </p>
               </div>
               <div className="order-1 md:order-2 col-span-1  flex items-center justify-center">
