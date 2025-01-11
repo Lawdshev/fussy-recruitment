@@ -9,7 +9,6 @@ import objects from "@/assets/bodyframe/OBJECTS.png"
 import Button from "@/components/ui/button/btn";
 import { useRouter } from "next/navigation";
 
-
 function page() {
     const router = useRouter();
   return (
