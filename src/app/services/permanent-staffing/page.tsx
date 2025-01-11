@@ -12,7 +12,7 @@ import SectionWithImage from "@/components/goals/goal";
 import { useRouter } from "next/navigation";
 
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   return (
     <div>
@@ -67,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
