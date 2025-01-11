@@ -1,5 +1,6 @@
 "use client";
 
+import useOutsideClick from "@/hooks/use-outside-click";
 import React, { useState } from "react";
 import { CgChevronUp } from "react-icons/cg";
 
@@ -8,6 +9,7 @@ interface DropdownProps {
   options: { value: string; label: string }[];
   onChange: (value: string) => void;
   required?: boolean;
+  error?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -15,9 +17,14 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   onChange,
   required,
+error
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
+   const callback = () => {
+    setIsOpen(false);
+  };
+  const ref = useOutsideClick<HTMLDivElement>(callback);
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
@@ -34,7 +41,7 @@ const Dropdown: React.FC<DropdownProps> = ({
       <div className="relative w-full">
         <button
           type="button"
-          className="text-left border border-[#A7A7A9] w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black "
+          className="text-left border border-[#A7A7A9] w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-black text-primary-text "
           onClick={() => setIsOpen(!isOpen)}
         >
           {selectedOption
@@ -45,11 +52,11 @@ const Dropdown: React.FC<DropdownProps> = ({
           </span>
         </button>
         {isOpen && (
-          <div className="absolute left-0 w-full mt-2 border border-gray-300 rounded-lg bg-blue-50 shadow-lg">
+          <div ref={ref} className="absolute left-0 w-full mt-2 border border-gray-300 rounded-lg bg-blue-50 shadow-lg z-50">
             {options.map((option) => (
               <label
                 key={option.value}
-                className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
+                className="flex items-center px-4 py-2 cursor-pointer text-primary-text hover:bg-gray-100"
               >
                 <input
                   type="radio"
@@ -57,7 +64,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                   value={option.value}
                   checked={selectedOption === option.value}
                   onChange={() => handleOptionChange(option.value)}
-                  className="mr-2"
+                  className="mr-2 text-primary-text"
                 />
                 {option.label}
               </label>
@@ -65,6 +72,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           </div>
         )}
       </div>
+        {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   );
 };
