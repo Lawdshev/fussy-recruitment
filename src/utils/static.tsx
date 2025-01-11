@@ -36,8 +36,8 @@ export const servicesRoutes = [
 export const quicklinks = [
   {
     name: "About us",
-    path: "/about",
+    path: "/about-us",
   },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Contact Us", path: "/contact-us" },
   { name: "Blog", path: "/blog" },
 ];
