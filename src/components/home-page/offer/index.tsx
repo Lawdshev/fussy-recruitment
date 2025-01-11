@@ -1,11 +1,14 @@
+"use client"
 import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa";
 import Button from "@/components/ui/button/btn";
 import Image from "next/image";
 import blacknurse from "@/assets/Frame 1618872593.png";
+import { useRouter } from "next/navigation";
 
 function ServiceOffered() {
+  const router = useRouter();
   return (
     <div className="bg-white py-12">
       <div className="container mx-auto px-4 lg:px-8">
@@ -67,6 +70,7 @@ function ServiceOffered() {
             </div>
             <div className="flex mt-10 xl:mt-20">
               <Button
+                onClick={() => router.push("/recruitment-process-outsourcing")}
                 text="Learn More"
                 bgColor="bg-[#000000]"
                 textColor="text-[#FEFEFE]"

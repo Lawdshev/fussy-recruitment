@@ -33,24 +33,24 @@ function WhyChoose() {
         <div className="py-16 bg-white">
             <div className="container mx-auto px-4 text-center">
                 <PageTitle title="Why Choose Fussy Recruitment's RPO?" />
-                <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {features.map((feature, index) => (
-                        <div
-                            key={index}
-                            className="rounded-lg  text-left p-6 "
-                        >
+                        <div key={index} className="rounded-lg text-left p-6">
                             <div className="flex items-center space-x-3">
                                 {feature.icon}
                                 <h2 className="text-lg font-medium text-primary-text">
                                     {feature.title}
                                 </h2>
                             </div>
-                            <p className="text-[#0C0C0C] leading-[28px]  mt-4 text-sm">{feature.description}</p>
+                            <p className="text-[#0C0C0C] leading-[28px] sm:leading-[26px]  lg:leading-[28px] mt-4 text-sm">
+                                {feature.description}
+                            </p>
                         </div>
                     ))}
                 </div>
             </div>
         </div>
+
     );
 }
 export default WhyChoose

@@ -9,6 +9,8 @@ import ellipse from "@/assets/hero/Ellipse 7.png";
 import polygon from "@/assets/hero/Polygon 1.png";
 import Button from "../../ui/button/btn";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -26,6 +28,8 @@ const fadeInRight = {
 };
 
 function Index() {
+  const router = useRouter();
+
   return (
     <div className="bg-[#FFFCF5] pt-6 xl:pt-12">
       <div className="grid grid-cols-2 lg:px-8 xl:px-4 2xl:px-8 container mx-auto">
@@ -68,12 +72,14 @@ function Index() {
             </motion.p>
             <div className="flex items-center gap-4">
               <Button
+                onClick={() => router.push("/application")}
                 text="Find Your Next Role"
                 bgColor="bg-black"
                 size="px-2 py-2 md:px-3 md:text-lg font-medium"
                 textColor="text-white"
               />
               <Button
+                onClick={() => router.push("/consultation")}
                 text="Hire Top Talents"
                 bgColor="bg-[#FCB828]"
                 size="px-3 py-2 md:px-3 md:text-lg font-medium"

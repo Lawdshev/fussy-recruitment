@@ -5,6 +5,7 @@ import InputField from "@/components/ui/button/input/input";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsTwitterX } from "react-icons/bs";
+import { useRouter } from "next/navigation";
 import { PiPhoneCall } from "react-icons/pi";
 import { LuFacebook } from "react-icons/lu";
 import { SlSocialLinkedin } from "react-icons/sl";
@@ -16,6 +17,7 @@ import SuccessModal from "@/components/modals/successModal";
 import ErrorModal from "@/components/modals/errorModal";
 
 const Page = () => {
+    const router=useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -119,6 +121,7 @@ const Page = () => {
             onChange={handleChange}
           />
           <Button
+             onClick={() => router.push("/recruitment-process-outsourcing")}
             disabled={isLoading}
             text={isLoading ? "sending..." : "Send Message"}
             bgColor="bg-[#000000]"
@@ -171,13 +174,13 @@ const Page = () => {
           <div>
             <p className="font-medium mb-3">Social Media</p>
             <div className="w-full lg:w-auto flex space-x-1 justify-center lg:justify-end mt-4 lg:mt-0">
-              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              <button onClick={() => router.push("https://www.twitter.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <BsTwitterX className="text-black" />
               </button>
-              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              <button onClick={() => router.push("https://www.facebook.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <LuFacebook className="text-[#1877F2]" />
               </button>
-              <button className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              <button onClick={() => router.push("/https://www.linkedin.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <SlSocialLinkedin className="text-[#0077B5]" />
               </button>
             </div>

@@ -1,11 +1,15 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Group14 from "@/assets/Group14.png"
 import Group11 from "@/assets/hero/Group11.png"
 import Button from '@/components/ui/button/btn'
 import { FaArrowRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+
 
 function Index() {
+  const router = useRouter();
   return (
     <div className="bg-[#FFF6ED] pt-6 md:pt-12">
       <div className="container mx-auto px-4 lg:px-20">
@@ -32,6 +36,7 @@ function Index() {
               healthcare career with us.
             </p>
             <Button
+              onClick={() => router.push("/application")}
               text="Get Started Now"
               bgColor="bg-[#FFFFFF]"
               icon={<FaArrowRight />}
@@ -51,6 +56,7 @@ function Index() {
               quickly and efficiently, ensuring your facility runs smoothly.
             </p>
             <Button
+              onClick={() => router.push("/contact-us")}
               text="Contact Us Now"
               bgColor="bg-[#FFFFFF]"
               icon={<FaArrowRight />}

@@ -18,8 +18,6 @@ function Page() {
           </h3>
           <p className="">Let Us Help You Find the Right Professionals</p>
         </div>
-        {/* Consultation form */}
-
         <ConsultationForm />
       </div>
       <section className="bg-[#FFFCF5] py-[4.5em]">
@@ -37,7 +35,6 @@ function Page() {
                 your consultation now!`}
               </p>
             </div>
-
             <div className="border-2 rounded-lg border-[#007474]">
               <Image
                 src={consultationImage}
@@ -48,7 +45,6 @@ function Page() {
                 objectFit="cover"
               />
             </div>
-
             <div className="text-left">
               <p className="text-sm leading-[1.5em] text-primary-text ">
                 Ready to improve your healthcare staffing? Our consultation
@@ -58,7 +54,6 @@ function Page() {
               </p>
             </div>
           </div>
-
           <div className="grid md:grid-cols-3 gap-[8em] items-center ">
             <div className="relative">
               <div className="absolute -top-28 left-24 ">
@@ -70,7 +65,6 @@ function Page() {
                 />
               </div>
             </div>
-
             <div className="">
               <p className="text-sm leading-[1.5em] text-primary-text">
                 {` Whether you're struggling with staffing shortages, looking for
