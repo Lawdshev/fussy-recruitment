@@ -28,24 +28,28 @@ const offers = [
 
 function WhatWeOffer() {
     return (
-        <section className="bg-[#FFFCF5] py-16 px-6">
+        <section className="bg-[#FFFCF5] py-16 px-4 sm:px-6 lg:px-12">
             <div className="max-w-6xl mx-auto text-center">
                 <PageTitle title="What We Offer" />
                 <div className="space-y-8 mt-12">
                     {offers.map((offer, index) => (
                         <div
                             key={index}
-                            className="flex items-start space-x-4 text-left"
+                            className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 text-left"
                         >
                             <FaCheckCircle className="w-8 h-8 text-[#008080] flex-shrink-0" />
-                            <div className="flex items-center space-x-2">
-                                <TitleDescription title={offer.title} description={offer.description} />
+                            <div className="flex-1 leading-[30px] lg:leading-[30px] sm:leading-[28px]">
+                                <TitleDescription
+                                    title={offer.title}
+                                    description={offer.description}
+                                />
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
         </section>
+
     );
 }
 export default WhatWeOffer

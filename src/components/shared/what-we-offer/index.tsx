@@ -31,15 +31,18 @@ function WhatWeOffer() {
         <section className="bg-[#FFFCF5] py-16 px-6">
             <div className="max-w-6xl mx-auto text-center">
                 <PageTitle title="Our RPO Services" />
-                <div className="space-y-8 mt-12">
+                <div className="space-y-12 mt-12">
                     {offers.map((offer, index) => (
                         <div
                             key={index}
-                            className="flex items-start space-x-4 text-left"
+                            className="flex flex-col sm:flex-row items-start sm:space-x-4 text-left"
                         >
-                            <FaCheckCircle className="w-8 h-8 text-[#008080] flex-shrink-0" />
-                            <div className="flex items-center space-x-2">
-                                <TitleDescription title={offer.title} description={offer.description} />
+                            <FaCheckCircle className="w-8 h-8 text-[#008080] flex-shrink-0 mb-4 sm:mb-0" />
+                            <div>
+                                <TitleDescription
+                                    title={offer.title}
+                                    description={offer.description}
+                                />
                             </div>
                         </div>
                     ))}

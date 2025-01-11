@@ -1,9 +1,12 @@
-import Button from "@/components/ui/button/btn";
+"use client"
 import React from "react";
 import Image from 'next/image';
 import people from "@/assets/bodyframe/people.png"
+import Button from "@/components/ui/button/btn";
+import { useRouter } from "next/navigation";
 
 const RecruitmentSection = () => {
+    const router = useRouter();
   return (
     <div className="bg-[#FDC653] px-6 sm:px-12 md:px-16 lg:px-20">
       <div className="container flex flex-col lg:flex-row items-center justify-between lg:justify-center mx-auto pt-8 sm:pt-12 lg:pt-18 lg:gap-12">
@@ -17,6 +20,7 @@ const RecruitmentSection = () => {
           </p>
           <div className="flex items-center justify-center lg:justify-start mt-6">
             <Button
+              onClick={() => router.push("/contact-us")}
               text="Contact Us"
               bgColor="bg-[#000000]"
               size="px-6 py-2 font-normal mx-auto"

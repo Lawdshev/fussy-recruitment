@@ -3,6 +3,7 @@ import Button from "@/components/ui/button/btn";
 
 interface SectionWithImageProps {
     title: string;
+    onClick: () => void;
     description: string;
     buttonText: string;
     buttonBgColor: string;
@@ -22,6 +23,7 @@ export default function SectionWithImage({
     buttonSize,
     imageSrc,
     imageAlt,
+    onClick,
     containerBgColor = "bg-[#FDC653]",
 }: SectionWithImageProps) {
     return (
@@ -31,11 +33,12 @@ export default function SectionWithImage({
                     <h1 className="text-2xl sm:2xl font-medium text-[#0C0C0C] leading-snug">
                         {title}
                     </h1>
-                    <p className="font-normal leading-[30px] text-[#0C0C0C] mt-4">
+                    <p className="font-normal leading-[30px] sm:leading-[30px] lg:leading-[30px] text-[#0C0C0C] mt-4">
                         {description}
                     </p>
-                    <div className="flex items-center ml-48 justify-center lg:justify-start mt-6">
+                    <div className="flex items-center mx-auto justify-center lg:justify-center my-6">
                         <Button
+                        onClick={onClick}
                             text={buttonText}
                             bgColor={buttonBgColor}
                             size={buttonSize}
