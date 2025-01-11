@@ -16,7 +16,7 @@ import Button from '@/components/ui/button/btn';
 import { fetchAPI } from '@/utils/fetchApi';
 import SuccessModal from '@/components/modals/successModal';
 import ErrorModal from '@/components/modals/errorModal';
-import {useRouter} from "next/navigation";
+import Link from 'next/link';
 
 const schema = yup.object().shape({
   firstName: yup.string().required('First Name is required'),
@@ -29,7 +29,6 @@ const schema = yup.object().shape({
 type FormData = yup.InferType<typeof schema>;
 
 const Page: React.FC = () => {
-  const router = useRouter
   const { register, handleSubmit,reset, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
@@ -152,15 +151,15 @@ const Page: React.FC = () => {
           <div>
             <p className="font-medium mb-3">Social Media</p>
             <div className="w-full lg:w-auto flex space-x-1 justify-center lg:justify-end mt-4 lg:mt-0">
-              <button onClick={() => router.push("https://www.twitter.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              <Link href="https://www.twitter.com" className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <BsTwitterX className="text-black" />
-              </button>
-              <button onClick={() => router.push("https://www.facebook.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              </Link>
+              <Link href="https://www.facebook.com" className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <LuFacebook className="text-[#1877F2]" />
-              </button>
-              <button onClick={() => router.push("/https://www.linkedin.com")} className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
+              </Link>
+              <Link href="https://www.linkedin.com" className="w-8 h-8 flex items-center justify-center bg-white hover:shadow-lg rounded-full">
                 <SlSocialLinkedin className="text-[#0077B5]" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
