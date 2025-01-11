@@ -9,7 +9,7 @@ import objects from "@/assets/bodyframe/OBJECTS.png"
 import Button from "@/components/ui/button/btn";
 import { useRouter } from "next/navigation";
 
-function page() {
+function Page() {
     const router = useRouter();
   return (
     <div>
@@ -46,4 +46,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
