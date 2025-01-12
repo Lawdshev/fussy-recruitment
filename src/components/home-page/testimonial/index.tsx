@@ -42,7 +42,7 @@ function Testimonials() {
         </p>
       </div>
 
-      <div className="relative bg-[#E6F2F2] p-8 sm:p-16 rounded-xl h-auto shadow-lg text-center max-w-[990px] mx-auto overflow-hidden">
+      <div className="relative bg-[#E6F2F2] p-3 sm:p-16 rounded-xl h-auto shadow-lg text-center max-w-[990px] mx-auto overflow-hidden">
         <p className="text-base sm:text-lg text-[#0C0C0C] max-w-[654px] mx-auto p-4 sm:p-8">
           “{testimonials[currentIndex].text}”
         </p>
@@ -54,15 +54,13 @@ function Testimonials() {
           <p className="font-medium text-[#242424]">{testimonials[currentIndex].author}</p>
         </div>
 
-        <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4">
+        <div className="flex justify-center gap-4 mt-6 sm:mt-0 sm:absolute sm:top-1/2 sm:-translate-y-1/2 sm:left-4 sm:right-4 sm:justify-between">
           <button
             onClick={prevSlide}
             className="bg-[#FFFFFF] text-[#242424] w-8 sm:w-12 p-2 rounded-md shadow hover:bg-gray-200"
           >
             <IoIosArrowBack className="text-center mx-auto text-sm sm:text-lg" />
           </button>
-        </div>
-        <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4">
           <button
             onClick={nextSlide}
             className="bg-[#FFFFFF] text-[#242424] w-8 sm:w-12 p-2 rounded-md shadow hover:bg-gray-200"

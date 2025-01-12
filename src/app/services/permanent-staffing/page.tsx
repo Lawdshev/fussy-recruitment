@@ -1,3 +1,4 @@
+"use client"
 import PageTitle from "@/components/shared/page-title";
 import Image from "next/image";
 import React from "react";
@@ -8,8 +9,11 @@ import CareSettings from "@/components/shared/caresettings/care-setting";
 import objects from "@/assets/bodyframe/OBJECTS.png";
 import ClientStory from "@/components/shared/client-story/client-story";
 import SectionWithImage from "@/components/goals/goal";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+
+const Page = () => {
+  const router = useRouter();
   return (
     <div>
       <div className="container mx-auto pt-12 px-6 sm:px-12 md:px-16 lg:px-24">
@@ -47,7 +51,9 @@ const page = () => {
       </div>
       <CareSettings />
       <ClientStory story={`“The quality of staff provided by Fussy Recruitment is truly exceptional. Every team member brings a kind and caring nature to our residents, exhibiting both patience and compassion. Their knowledge and training are top-notch, ensuring that they not only meet but exceed the high standards of care we strive to maintain. The staff are always polite, courteous, and respectful, which significantly enhances the experience for our residents”`} name="Healthcare Organisation" />
-      <SectionWithImage buttonBgColor="bg-[#000000]"
+      <SectionWithImage
+ onClick={() => router.push("/consultation")}
+       buttonBgColor="bg-[#000000]"
         buttonSize="px-3 py-2 "
         buttonText="Contact Us"
         buttonTextColor="text-white"
@@ -61,4 +67,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

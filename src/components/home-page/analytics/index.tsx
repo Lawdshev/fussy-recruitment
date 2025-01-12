@@ -1,6 +1,11 @@
+"use client"
 import Button from "@/components/ui/button/btn";
+import { useRouter } from "next/navigation";
+
 
 function Index() {
+const router = useRouter();
+  
   return (
     <div className="bg-[#FDC653] w-screen">
       <div className="container mx-auto px-6 sm:px-12 lg:px-24 py-12 sm:py-16 lg:py-24 ">
@@ -43,9 +48,10 @@ function Index() {
               precision and care.
             </p>
             <Button
+              onClick={() => router.push("/contact-us")}
               text={"Contact Us"}
               bgColor="bg-black"
-              size="px-4 py-2 font-medium mx-auto lg:mx-0"
+              size="px-4 py-2 font-medium mx-auto "
               textColor="text-white"
             />
           </div>

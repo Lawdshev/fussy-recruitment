@@ -14,8 +14,8 @@ function ClientStory({ story, name }: IProps) {
           <PageTitle title="Client Success Stories" />
         </h2>
         <div className="bg-[#E6F2F2] rounded-xl px-6 sm:px-12 lg:px-24 py-14 shadow-md">
-          <p className="text-lg text-[#242424] leading-[32px] mb-6">
-           {story}
+          <p className="text-lg text-[#242424] leading-[32px] sm:leading-[30px] lg:leading-[32px] mb-6">
+            {story}
           </p>
           <div className="flex justify-center mt-2 space-x-1 mb-4">
             {Array.from({ length: 5 }, (_, index) => (
@@ -26,6 +26,7 @@ function ClientStory({ story, name }: IProps) {
         </div>
       </div>
     </section>
+
   );
 }
 
