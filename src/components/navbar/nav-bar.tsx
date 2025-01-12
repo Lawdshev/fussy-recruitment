@@ -54,6 +54,7 @@ export default function NavBar() {
             borderColor="border-black"
           />
           <Button
+            onClick={() => router.push("/application")}
             text="Get Hired"
             bgColor="bg-black"
             size="px-4 py-2 text-sm"
