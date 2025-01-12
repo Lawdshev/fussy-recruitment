@@ -10,7 +10,7 @@ const router = useRouter();
     <div className="bg-[#FDC653] w-screen">
       <div className="container mx-auto px-6 sm:px-12 lg:px-24 py-12 sm:py-16 lg:py-24 ">
         <div className="flex flex-col lg:flex-row justify-around gap-8 lg:gap-24">
-          <div className=" mx-auto gap-6 flex items-center lg:flex-col lg:space-y-8 text-center lg:text-left">
+          <div className=" mx-auto gap-4 md:gap-6 flex items-center lg:flex-col lg:space-y-8 text-center lg:text-left">
             <div>
               <p className="text-[#723A20] text-3xl sm:text-4xl font-semibold">
                 12k+

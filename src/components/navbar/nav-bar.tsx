@@ -85,6 +85,10 @@ export default function NavBar() {
             </div>
             <div className="flex flex-col gap-3 px-4 py-2">
               <Button
+                onClick={() => {
+                  setMenuOpen(false)
+                  router.push("/consultation")
+                }}
                 text="Hire"
                 bgColor="bg-white"
                 size="px-4 py-2 text-sm"
@@ -93,6 +97,10 @@ export default function NavBar() {
                 borderColor="border-black"
               />
               <Button
+                onClick={() => {
+                  setMenuOpen(false)
+                  router.push("/application")
+                }}
                 text="Get Hired"
                 bgColor="bg-black"
                 size="px-4 py-3 text-sm"

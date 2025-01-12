@@ -70,7 +70,7 @@ function Index() {
             >
               Expertly Managing Contingent Workforces with Precision and Care
             </motion.p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <Button
                 onClick={() => router.push("/application")}
                 text="Find Your Next Role"
