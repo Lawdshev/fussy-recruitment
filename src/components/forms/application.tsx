@@ -9,6 +9,7 @@ import Image from "next/image";
 import ImageUploadIcon from "@/assets/svgs/imageUploadIcon.svg";
 import { Checkbox } from "../ui/button/checkbox/checkbox";
 import { LegalLabel } from "./legalLabel";
+import { BiInfoCircle } from "react-icons/bi";
 
 const steps = [
   "Personal Details",
@@ -48,8 +49,11 @@ export const ApplicationForm = () => {
                   // value={formData.companyName}
                   // onChange={handleChange}
                 />
-                <span className="flex space-x-2">
-                  <p>1</p> <p>Leave blank if you have no middle name</p>{" "}
+                <span className="flex space-x-2 items-center text-xs text-[#3A3A3F]">
+                  <span>
+                    <BiInfoCircle />
+                  </span>{" "}
+                  <p>Leave blank if you have no middle name</p>{" "}
                 </span>
               </div>
               <InputField
@@ -207,6 +211,7 @@ export const ApplicationForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                 <div>
                   <InputField
+                    type="date"
                     label="Date From"
                     name="firstName"
                     required
@@ -219,6 +224,7 @@ export const ApplicationForm = () => {
                 </div>
                 <InputField
                   label="Date To"
+                  type="date"
                   name="lastName"
                   // value={formData.industryType}
                   // onChange={handleChange}
