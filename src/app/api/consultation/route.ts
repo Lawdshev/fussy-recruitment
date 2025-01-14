@@ -1,7 +1,7 @@
-import { Message } from "./../../../../node_modules/react-hook-form/dist/types/errors.d";
 import { NextResponse } from "next/server";
 import { transporter } from "../config/nodemailer";
 import { base } from "../config/airtable";
+import { Error } from "airtable";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -29,10 +29,10 @@ export async function POST(request: Request) {
       "Number of Position": numberOfPositions,
       "Phone Number": phone,
     },
-    (err: any) => {
+    (err: Error) => {
       if (err) {
         console.error("Error creating record:", err);
-        NextResponse.json(500).json();
+        return NextResponse.json(500).json();
       }
     }
   );
