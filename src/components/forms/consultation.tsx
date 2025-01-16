@@ -59,11 +59,7 @@ export const ConsultationForm = () => {
   });
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
     try {
-      console.log({
-        data,
-      });
       const response = await fetchAPI<{ message: string }>("api/consultation", {
         method: "POST",
         body: data,

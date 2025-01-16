@@ -1,15 +1,22 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import UploadIcon from "@/assets/svgs/uploadIcon.svg";
+import { BiTrash } from "react-icons/bi";
 
 interface FileUploadProps {
   onFileSelect?: (file: File) => void;
   label: string;
+  formFile: File | null;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, label }) => {
-  const [file, setFile] = useState<File | null>(null);
+const FileUpload: React.FC<FileUploadProps> = ({
+  onFileSelect,
+  label,
+  formFile,
+}) => {
+  const [file, setFile] = useState<File | null>(formFile);
   const [error, setError] = useState<string>("");
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = event.target.files?.[0];
@@ -59,6 +66,10 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, label }) => {
     }
   };
 
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
     <div className="w-full">
       <label className="block text-[#09090A] text-sm mb-3">{label}</label>
@@ -68,6 +79,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, label }) => {
         }`}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        onClick={handleClick}
       >
         {!file ? (
           <>
@@ -82,14 +94,18 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileSelect, label }) => {
             <input
               type="file"
               className="hidden"
+              ref={fileInputRef}
               onChange={handleFileUpload}
               accept=".pdf,.doc,.docx"
             />
           </>
         ) : (
-          <div className="text-sm text-gray-700">
-            <p>{file.name}</p>
-            <p className="text-green-500">File uploaded successfully!</p>
+          <div className="flex flex-col space-y-2 items-center">
+            <div className="text-sm text-gray-700">
+              <p>{file?.name}</p>
+              <p className="text-green-500">File uploaded successfully!</p>
+            </div>
+            <BiTrash onClick={() => setFile(null)} />
           </div>
         )}
       </div>
