@@ -10,6 +10,7 @@ interface DropdownProps {
   onChange: (value: string) => void;
   required?: boolean;
   error?: string;
+  defaultValue?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -17,11 +18,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   options,
   onChange,
   required,
-error
+  defaultValue,
+  error,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>("");
-   const callback = () => {
+  const callback = () => {
     setIsOpen(false);
   };
   const ref = useOutsideClick<HTMLDivElement>(callback);
@@ -46,13 +48,16 @@ error
         >
           {selectedOption
             ? options.find((option) => option.value === selectedOption)?.label
-            : ""}
+            : defaultValue}
           <span className="float-right">
             <CgChevronUp size={24} />
           </span>
         </button>
         {isOpen && (
-          <div ref={ref} className="absolute left-0 w-full mt-2 border border-gray-300 rounded-lg bg-blue-50 shadow-lg z-50">
+          <div
+            ref={ref}
+            className="absolute left-0 w-full mt-2 border border-gray-300 rounded-lg bg-blue-50 shadow-lg z-50"
+          >
             {options.map((option) => (
               <label
                 key={option.value}
@@ -72,7 +77,7 @@ error
           </div>
         )}
       </div>
-        {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   );
 };

@@ -7,6 +7,7 @@ interface ButtonProps {
   textColor?: string;
   border?: string;
   size?: string;
+  flexPosition?: string;
   borderColor?: string;
   icon?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -24,13 +25,14 @@ const Button: React.FC<ButtonProps> = ({
   type = "submit",
   onClick,
   disabled,
+  flexPosition,
 }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       type={type}
-      className={`rounded-lg flex justify-center items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size}`}
+      className={`rounded-lg flex justify-center items-center gap-2 ${bgColor} ${borderColor} ${textColor} ${border} ${size} ${flexPosition}`}
     >
       {text}
       {icon}
