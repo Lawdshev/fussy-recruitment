@@ -29,7 +29,7 @@ function ServiceOffered() {
               the right workforce, save valuable time, and build a stronger,
               compliant team.
             </p>
-            <div className="max-w-[506px] mx-auto items-center">
+            <div className="max-w-[506px]  mx-auto items-center">
               <div className="border-l-2 mt-8 border-[#B3831C] w-36 mx-auto border-r-2">
                 <h3 className="text-lg font-medium ml-2 text-[#0C0C0C]">
                   What We Offer
@@ -68,13 +68,13 @@ function ServiceOffered() {
                 </div>
               </div>
             </div>
-            <div className="flex mt-10 xl:mt-20">
+            <div className="">
               <Button
-                onClick={() => router.push("/recruitment-process-outsourcing")}
+                onClick={() => router.push("/services/recruitment-process-outsourcing")}
                 text="Learn More"
                 bgColor="bg-[#000000]"
                 textColor="text-[#FEFEFE]"
-                size="px-4 py-2 font-medium mx-auto lg:mx-0"
+                size="px-4 py-2 font-medium mx-auto lg:mx-0 mt-5 xl:mt-10 "
                 icon={<FaArrowRight />}
               />
             </div>
