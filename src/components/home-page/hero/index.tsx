@@ -31,28 +31,28 @@ function Index() {
   const router = useRouter();
 
   return (
-    <div className="bg-[#FFFCF5] pt-6 xl:pt-12">
-      <div className="grid grid-cols-2 lg:px-8 xl:px-4 2xl:px-8 container mx-auto">
+    <div className="bg-[#FFFCF5] pt-6 xl:pt-4">
+      <div className="grid grid-cols-2 lg:px-8 xl:px-4 2xl:px-8 xl:py-20 2xl:py-10 container mx-auto">
         <motion.div
-          className="relative col-span-2  xl:col-span-1 py-8 xl:py-0 xl:h-[calc(60vh-100px)] px-4 xl:px-0"
+          className="relative col-span-2  xl:col-span-1 py-8 xl:py-0 px-4 xl:px-0"
           initial="hidden"
           animate="visible"
           variants={fadeInLeft}
         >
           <motion.div
-            className="absolute top-0 left-0 xl:-left-8 2xl:left-0"
+            className="absolute top-0 left-0 md:top-4 md:left-12 xl:-top-12 2xl:top-0 xl:left-0"
             variants={fadeInLeft}
           >
             <Image src={floatingOne} alt="floating arrow" />
           </motion.div>
           <motion.div
-            className="absolute top-0 right-28"
+            className="absolute top-0 right-28 xl:-top-12 2xl:top-0"
             variants={fadeInRight}
           >
             <Image src={floatingThree} alt="floating rectangle" />
           </motion.div>
           <motion.div
-            className="absolute bottom-20 md:bottom-16 xl:bottom-0 2xl:bottom-16 2xl:right-16 right-4 md:right-16 xl:right-0"
+            className="absolute bottom-20 sm:bottom-4 sm:right-12 md:bottom-8  2xl:bottom-16 2xl:right-16 right-4 md:right-8 lg:right-24 xl:right-4 xl:bottom-2"
             variants={fadeInRight}
           >
             <Image src={floatingTwo} alt="floating arrow" />
@@ -89,7 +89,7 @@ function Index() {
           </div>
         </motion.div>
         <motion.div
-          className="relative col-span-2 xl:col-span-1 py-12 md:py-8 px-8 xl:px-16 xl:min-h-[calc(65vh-100px)]"
+          className="relative col-span-2 xl:col-span-1 py-12 md:py-16 xl:py-0 2xl:py-8 px-8 xl:px-16 "
           initial="hidden"
           animate="visible"
           variants={fadeInRight}
@@ -97,16 +97,16 @@ function Index() {
           <Image
             src={covid}
             alt="covid 19 frontline healthcare essential workers"
-            className="mx-auto lg:w-[80%] xl:w-[90%]"
+            className="mx-auto w-full lg:w-[80%] xl:w-[100%] 2xl:w-[80%] max-w-[561px] mb-4"
           />
           <motion.div
-            className="absolute bottom-0 md:bottom-8 left-12"
+            className="absolute bottom-4  left-4 md:left-24 lg:left-28 xl:-bottom-12 xl:left-8 2xl:bottom-0 2xl:left-20"
             variants={fadeInLeft}
           >
             <Image src={ellipse} alt="ellipse" />
           </motion.div>
           <motion.div
-            className="absolute top-0 right-4 md:right-0"
+            className="absolute top-0 right-4 md:right-24 md:top-4 xl:-top-10 xl:right-5 2xl:right-20 2xl:top-0"
             variants={fadeInRight}
           >
             <Image src={polygon} alt="polygon" />
