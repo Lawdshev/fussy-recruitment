@@ -11,7 +11,7 @@ export const PersonalDetailsForm = () => {
   const formValues = getValues();
   return (
     <div className="flex flex-col space-y-4">
-      <p className="font-bold text-lg">Personal Details</p>
+      <p className="font-bold text-lg text-primary-text">Personal Details</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InputField
           label="First Name"

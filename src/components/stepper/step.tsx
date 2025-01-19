@@ -17,11 +17,11 @@ export const Step = ({
 }: IStep) => {
   return (
     <div
-      className={`flex items-center space-x-8 ${
+      className={`flex items-center md:space-x-4 xl:space-x-8 ${
         isActive ? "text-primary-text" : "text-[#A1A1A1]"
       }  font-medium text-base w-full`}
     >
-      <div className={`flex space-x-3 items-center`}>
+      <div className={`flex space-x-1 items-center`}>
         {isCompleted ? (
           <FaCheckCircle color="#B3831C" size={24} />
         ) : (
@@ -35,7 +35,7 @@ export const Step = ({
         )}
         <span className="whitespace-nowrap ">{label}</span>
       </div>
-      {!isLastChild && <div className="flex-1  h-[1px]  bg-[#C0C0C0] "></div>}
+      {!isLastChild && <div className="h-[1px] w-6 xl:w-16  bg-[#C0C0C0] "></div>}
     </div>
   );
 };
