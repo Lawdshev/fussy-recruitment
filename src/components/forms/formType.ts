@@ -1,3 +1,5 @@
+import { CloudinaryUploadResponse } from "../ui/button/fileUpload/type";
+
 export type ApplicationFormType = {
   personalDetails: {
     firstName: string;
@@ -19,9 +21,9 @@ export type ApplicationFormType = {
     spokenLanguages: string | number;
     ukWorkEligibility: string;
     skillsOrTraining: string;
-    cv: File | null;
-    certification: File | null;
-    otherDocument: File | null;
+    cv: CloudinaryUploadResponse | null;
+    certification: CloudinaryUploadResponse | null;
+    otherDocument: CloudinaryUploadResponse | null;
   };
   experience: {
     history: {
@@ -39,7 +41,7 @@ export type ApplicationFormType = {
     }[];
   };
   uniformAndLegal: {
-    photo: File | null;
+    photo: CloudinaryUploadResponse | null;
     uniformType: string;
     uniformSize: string;
     fitness: string;

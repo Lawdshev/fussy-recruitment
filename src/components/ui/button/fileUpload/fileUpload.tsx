@@ -2,25 +2,31 @@
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import UploadIcon from "@/assets/svgs/uploadIcon.svg";
-import { BiTrash } from "react-icons/bi";
+import { BiLoaderCircle, BiTrash } from "react-icons/bi";
+import { CloudinaryUploadResponse } from "./type";
 
 interface FileUploadProps {
-  onFileSelect?: (file: File) => void;
+  onFileSelect?: (data: CloudinaryUploadResponse) => void;
   label: string;
-  formFile: File | null;
+  defaultValue: CloudinaryUploadResponse | null;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
   onFileSelect,
   label,
-  formFile,
+  defaultValue,
 }) => {
-  const [file, setFile] = useState<File | null>(formFile);
+  const [file, setFile] = useState<CloudinaryUploadResponse | null>(
+    defaultValue
+  );
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string>("");
+  // const [imageUrl, setImageUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = event.target.files?.[0];
+    if (!uploadedFile) return;
     if (uploadedFile) {
       validateFile(uploadedFile);
     }
@@ -30,7 +36,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     event.preventDefault();
   };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     const uploadedFile = event.dataTransfer.files?.[0];
     if (uploadedFile) {
@@ -38,7 +44,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     }
   };
 
-  const validateFile = (uploadedFile: File) => {
+  const validateFile = async (uploadedFile: File) => {
     const allowedTypes = [
       "application/pdf",
       "application/msword",
@@ -58,15 +64,26 @@ const FileUpload: React.FC<FileUploadProps> = ({
       return;
     }
 
-    setError("");
-    setFile(uploadedFile);
+    const formData = new FormData();
 
-    console.log({
-      uploadedFile,
-    });
-    // Trigger the callback if provided
+    formData.append("file", uploadedFile);
+    formData.append("upload_preset", "fussy recruitment");
+    formData.append("cloud_name", "magnaibra");
+    setIsUploading(true);
+    const res = await fetch(
+      " https://api.cloudinary.com/v1_1/magnaibra/auto/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const cloudImageData = await res.json();
+    setFile(cloudImageData);
+    setIsUploading(false);
+    setError("");
+
     if (onFileSelect) {
-      onFileSelect(uploadedFile);
+      onFileSelect(cloudImageData);
     }
   };
 
@@ -87,26 +104,34 @@ const FileUpload: React.FC<FileUploadProps> = ({
       >
         {!file ? (
           <>
-            <Image src={UploadIcon} alt={"upload icon"} />
+            {isUploading ? (
+              <p>
+                <BiLoaderCircle />
+              </p>
+            ) : (
+              <>
+                <Image src={UploadIcon} alt={"upload icon"} />
 
-            <p className="mt-2 text-xs text-black">
-              <span className="font-medium  cursor-pointer underline-offset-1 underline">
-                Click to upload
-              </span>{" "}
-              or drag and drop
-            </p>
-            <input
-              type="file"
-              className="hidden"
-              ref={fileInputRef}
-              onChange={handleFileUpload}
-              accept=".pdf,.doc,.docx"
-            />
+                <p className="mt-2 text-xs text-black">
+                  <span className="font-medium  cursor-pointer underline-offset-1 underline">
+                    Click to upload
+                  </span>{" "}
+                  or drag and drop
+                </p>
+                <input
+                  type="file"
+                  className="hidden"
+                  ref={fileInputRef}
+                  onChange={handleFileUpload}
+                  accept=".pdf,.doc,.docx"
+                />
+              </>
+            )}
           </>
         ) : (
           <div className="flex flex-col space-y-2 items-center">
             <div className="text-sm text-gray-700">
-              <p>{file?.name}</p>
+              <p>{file?.original_filename}</p>
               <p className="text-green-500">File uploaded successfully!</p>
             </div>
             <BiTrash onClick={() => setFile(null)} />
