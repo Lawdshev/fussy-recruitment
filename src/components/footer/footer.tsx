@@ -9,8 +9,8 @@ import QuickLinks from "./quickLinks";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8">
-      <div className="container mx-auto">
+    <footer className="bg-black text-white py-12">
+      <div className="container mx-auto px-6 md:px-16 lg:px-20">
         <div className="px-4 py-3 flex flex-wrap justify-between items-center">
           <div className="w-full md:w-auto text-center lg:text-left">
             <Image src={footerlogo} alt="logo" className="mx-auto lg:mx-0" />

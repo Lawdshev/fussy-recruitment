@@ -5,7 +5,7 @@ import youth from "@/assets/about-hero/authentic-small-youthful-marketing-agency
 
 const Hero = () => {
   return (
-    <div className="container py-6 md:py-12 px-8 md:px-24 lg:px-32 xl:px-8 mx-auto">
+    <div className="container py-12 px-8 md:px-24 lg:px-32 xl:px-8 mx-auto">
       <PageTitle title="About Us" />
       <div className="flex flex-col-reverse xl:flex-row items-center gap-8 xl:gap-16 xl:px-6 container mx-auto mt-8 lg:mt-12">
         <div className="w-full xl:w-[50%]">

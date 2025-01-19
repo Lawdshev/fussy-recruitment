@@ -18,34 +18,34 @@ const Page = () => {
     <div>
       <div className="container mx-auto pt-12 px-6 sm:px-12 md:px-16 lg:px-24">
         <PageTitle title="Permanent Staffing" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-          <div className="order-2 mt-8 md:order-1 col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 py-12">
+          <div className="order-2 mt-6 lg:order-1 col-span-1">
             <p className="text-primary-text leading-[30px]">
               Fussy Recruitment offers comprehensive permanent staffing services to match healthcare providers with the best long-term talent. Finding the right permanent staff is critical to maintaining consistent, high-quality care. That&apos;s why our process is thorough, focusing on rigorous screening and meticulous selection to ensure we provide Nurses, Healthcare Assistants, Support Workers and Carers with the necessary skills and experience aligned with your organisation&apos;s values and culture.
             </p>
           </div>
-          <div className="order-1 md:order-2 col-span-1 flex items-center justify-center">
-            <Image src={frontviewblacknurse} alt="healthcare professionals" className="rounded-2xl" />
+          <div className="order-1 lg:order-2 col-span-1 flex items-center justify-center">
+            <Image src={frontviewblacknurse} alt="healthcare professionals" className="rounded-2xl w-full xl:w-[90%]" />
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-12">
-          <div className="order-1 md:order-1 col-span-1 flex items-center justify-center">
-            <Image src={nerddoctors} alt="healthcare professionals" className="rounded-2xl" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 py-12">
+          <div className="order-1 lg:order-1 col-span-1 flex items-center justify-center">
+            <Image src={nerddoctors} alt="healthcare professionals" className="rounded-2xl w-full xl:w-[90%]" />
           </div>
-          <div className="order-2 md:order-2 mt-12 col-span-1">
+          <div className="order-2 lg:order-2 mt-6 col-span-1">
             <p className="text-primary-text leading-[30px]">
               Our permanent staffing services cover various healthcare settings, including care homes, housing with care, children&apos;s services, specialist care units, live-in care, NHS facilities, and home care. We take the time to understand your specific needs and challenges, allowing us to identify and present candidates who will seamlessly integrate into your team and contribute positively to your organisation&apos;s goals.
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-          <div className="order-2 md:order-1 mt-12 col-span-1">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 py-12">
+          <div className="order-2 lg:order-1 mt-6 col-span-1">
             <p className="text-primary-text leading-[30px]">
               Every candidate we recommend undergoes a comprehensive vetting process, including background checks, qualification verification, and interviews. This rigorous approach ensures that you receive only the most qualified and committed professionals, reducing the risk of turnover and enhancing the stability of your workforce.
             </p>
           </div>
-          <div className="order-1 md:order-2 col-span-1 flex items-center justify-center">
-            <Image src={happydoctors} alt="healthcare professionals" className="rounded-2xl" />
+          <div className="order-1 lg:order-2 col-span-1 flex items-center justify-center">
+            <Image src={happydoctors} alt="healthcare professionals" className="rounded-2xl w-full xl:w-[90%]" />
           </div>
         </div>
       </div>

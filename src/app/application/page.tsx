@@ -3,8 +3,8 @@ import PageTitle from "@/components/shared/page-title";
 
 function Page() {
   return (
-    <main className="container mx-auto px-6 lg:px-44  py-[4.5em]">
-      <div className="text-center mb-[4.5em]">
+    <main className="container mx-auto px-6 lg:px-44  py-12">
+      <div className="text-center mb-8">
         <PageTitle title="Application" />
       </div>
       <div className="text-center text-primary-text flex flex-col gap-y-4">
@@ -24,7 +24,7 @@ function Page() {
           healthcare organisations
         </p>
       </div>
-      <div className="w-full mt-20 mb-16">
+      <div className="w-full mt-20 ">
         <ApplicationForm />
       </div>
     </main>

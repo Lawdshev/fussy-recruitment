@@ -23,7 +23,7 @@ export default function NavBar() {
   return (
     <nav className="bg-white border-b-2  sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Image src={logo} alt="logo" className="w-24" />
+        <Image src={logo} alt="logo"  />
 
         {/* Hamburger Menu Icon */}
         <div className="md:hidden">
@@ -85,6 +85,10 @@ export default function NavBar() {
             </div>
             <div className="flex flex-col gap-3 px-4 py-2">
               <Button
+                onClick={() => {
+                  setMenuOpen(false)
+                  router.push("/consultation")
+                }}
                 text="Hire"
                 bgColor="bg-white"
                 size="px-4 py-2 text-sm"
@@ -93,6 +97,10 @@ export default function NavBar() {
                 borderColor="border-black"
               />
               <Button
+                onClick={() => {
+                  setMenuOpen(false)
+                  router.push("/application")
+                }}
                 text="Get Hired"
                 bgColor="bg-black"
                 size="px-4 py-3 text-sm"

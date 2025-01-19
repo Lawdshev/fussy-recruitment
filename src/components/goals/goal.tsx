@@ -27,7 +27,7 @@ export default function SectionWithImage({
     containerBgColor = "bg-[#FDC653]",
 }: SectionWithImageProps) {
     return (
-        <div className={`${containerBgColor} px-6 sm:px-12 md:px-16 lg:px-20`}>
+        <div className={`${containerBgColor} px-6 sm:px-12 md:px-16 lg:px-20 `}>
             <div className="container flex flex-col lg:flex-row items-center justify-between lg:justify-center mx-auto pt-8 sm:pt-12 lg:pt-18 lg:gap-12">
                 <div className="text-center lg:max-w-[521px]">
                     <h1 className="text-2xl sm:2xl font-medium text-[#0C0C0C] leading-snug">
