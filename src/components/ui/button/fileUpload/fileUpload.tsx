@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import UploadIcon from "@/assets/svgs/uploadIcon.svg";
@@ -60,6 +61,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
     setError("");
     setFile(uploadedFile);
 
+    console.log({
+      uploadedFile,
+    });
     // Trigger the callback if provided
     if (onFileSelect) {
       onFileSelect(uploadedFile);

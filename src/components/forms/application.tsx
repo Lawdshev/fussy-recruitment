@@ -29,12 +29,14 @@ export const ApplicationForm = () => {
     defaultValues: {
       personalDetails: {
         positionOfInterest: "",
-        availablity: "",
+        availability: "",
+        email: "",
       },
       qualification: {
         ukWorkEligibility: "",
         cv: null,
         otherDocument: null,
+        certification: null,
       },
       experience: {
         history: [
