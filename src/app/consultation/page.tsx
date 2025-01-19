@@ -72,7 +72,7 @@ function Page() {
                 advice that aligns with your goals.`}
               </p>
             </div>
-            <div className="relative bg-red-600 hidden md:block">
+            <div className="relative hidden md:block">
               <div className="absolute -top-28 right-20 hidden md:block ">
                 <Image
                   src={curveArrowRight}
