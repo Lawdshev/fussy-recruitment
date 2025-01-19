@@ -32,7 +32,7 @@ function Testimonials() {
   };
 
   return (
-    <div className="bg-[#FFFFFF] container mx-auto px-6 sm:px-12 lg:px-24 py-8 sm:py-16 lg:py-24">
+    <div className="bg-[#FFFFFF] container mx-auto px-6 sm:px-12 lg:px-24 py-12">
       <div className="text-center max-w-[990px] mx-auto mb-8 sm:mb-12">
         <h2 className="text-xl sm:text-2xl font-semibold text-[#723A20]">
           Our Clients Trust Us
@@ -41,7 +41,6 @@ function Testimonials() {
           Discover why businesses and professionals trust us to deliver exceptional results.
         </p>
       </div>
-
       <div className="relative bg-[#E6F2F2] p-3 sm:p-16 rounded-xl h-auto shadow-lg text-center max-w-[990px] mx-auto overflow-hidden">
         <p className="text-base sm:text-lg text-[#0C0C0C] max-w-[654px] mx-auto p-4 sm:p-8">
           “{testimonials[currentIndex].text}”

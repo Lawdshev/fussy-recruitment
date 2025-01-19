@@ -56,7 +56,7 @@ const Page: React.FC = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="container mx-auto px-6 lg:px-44 py-12">
+    <div className="container mx-auto px-6 lg:px-12 xl:px-44 py-12">
       <div className="text-center mb-12">
         <PageTitle title="Contact Us" />
       </div>
@@ -112,7 +112,7 @@ const Page: React.FC = () => {
         <div>
           <iframe
             className="w-full h-full rounded-2xl"
-            src="https://www.google.com/maps/embed?..."
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.333333333333!2d0.7146515161013417!3d51.53846177959915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a36c32c2e45d%3A0x4b1f9c3b7e9f5d3b!2sHarrier%20House%2C%20Aviation%20Way%2C%20Southend%2C%20Essex.%20SS2%206UN!5e0!3m2!1sen!2suk!4v1669023457410!5m2!1sen!2suk"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen={false}
@@ -120,7 +120,7 @@ const Page: React.FC = () => {
         </div>
       </div>
       <div className="bg-[#FFF9EE] text-primary-text mt-12 p-6 rounded-xl shadow-md shadow-[#00000026]">
-        <div className="flex flex-col gap-6 sm:flex-row justify-between text-center sm:text-left">
+        <div className="flex flex-col gap-6 sm:flex-row flex-wrap justify-between text-center sm:text-left">
           <div className="mb-4 sm:mb-0 lg:max-w-[30%]">
             <p className="font-medium">Office Address</p>
             <div className="flex items-start justify-center my-3 md:gap-2">

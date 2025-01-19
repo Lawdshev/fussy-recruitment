@@ -7,9 +7,9 @@ import Image from "next/image";
 
 function Page() {
   return (
-    <main>
-      <div className="container mx-auto px-6 lg:px-44 py-12">
-        <div className="text-center mb-12">
+    <main className="">
+      <div className=" container mx-auto px-6 lg:px-44 py-12">
+        <div className="text-center mb-8">
           <PageTitle title="Consultation" />
         </div>
         <div className="text-center text-primary-text flex flex-col gap-y-4">
@@ -20,11 +20,11 @@ function Page() {
         </div>
         <ConsultationForm />
       </div>
-      <section className="bg-[#FFFCF5] py-[4.5em]">
-        <div className="text-center mb-[4.5em]">
+      <section className="bg-[#FFFCF5] container mx-auto px-6 lg:px-[7.5em] pt-12 ">
+        <div className="text-center mb-8">
           <PageTitle title="Schedule Your Free Consultation" />
         </div>
-        <div className="container mx-auto px-6 lg:px-[7.5em] ">
+        <div className=" ">
           <div className="grid md:grid-cols-3 md:gap-[5.5rem] items-center mb-[5.5rem]">
             <div className="text-left">
               <p className="text-sm leading-[1.5em] text-primary-text ">
@@ -35,7 +35,7 @@ function Page() {
                 your consultation now!`}
               </p>
             </div>
-            <div className="border-2 rounded-lg border-[#007474]">
+            <div className="border-2 rounded-lg border-[#007474] my-8">
               <Image
                 src={consultationImage}
                 alt="Consultation"
@@ -56,16 +56,14 @@ function Page() {
           </div>
           <div className="grid md:grid-cols-3 gap-[8em] items-center ">
             <div className="relative">
-              <div className="absolute -top-28 left-24 ">
+              <div className="absolute -top-12 md:-top-28 left-24 ">
                 <Image
                   src={curveArrowLeft}
                   alt="curve arrow left"
-                  // width={190}
-                  // height={34}
                 />
               </div>
             </div>
-            <div className="">
+            <div className="mb-12" >
               <p className="text-sm leading-[1.5em] text-primary-text">
                 {` Whether you're struggling with staffing shortages, looking for
                 specialised care professionals, or planning to optimise your
@@ -74,8 +72,8 @@ function Page() {
                 advice that aligns with your goals.`}
               </p>
             </div>
-            <div className="relative">
-              <div className="absolute -top-28 right-20 ">
+            <div className="relative bg-red-600 hidden md:block">
+              <div className="absolute -top-28 right-20 hidden md:block ">
                 <Image
                   src={curveArrowRight}
                   alt="curve arrow left"

@@ -6,8 +6,8 @@ import PageTitle from '../shared/page-title';
 
 const Mission = () => {
   return (
-    <>
-      <div className="py-6 md:py-12 lg:py-24 px-8 md:px-16 lg:px-32 bg-[#FFF9EE]">
+    <div >
+      <div className="py-12 px-8 md:px-16 lg:px-32 bg-[#FFF9EE]">
         <div className="container mx-auto grid grid-cols-1  lg:grid-cols-4 gap-8 items-center">
           <div className="col-span-1 lg:col-span-1 ">
             <Image
@@ -35,7 +35,7 @@ const Mission = () => {
           </div>
         </div>
       </div>
-      <div className="py-6 md:py-12 lg:py-24 px-8 md:px-16 lg:px-32 bg-[#E6F2F2]">
+      <div className="py-12 px-8 md:px-16 lg:px-32 bg-[#E6F2F2]">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
           <div className="col-span-1 lg:col-span-1">
             <Image
@@ -62,9 +62,8 @@ const Mission = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-
 
 export default Mission

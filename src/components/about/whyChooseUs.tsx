@@ -28,13 +28,13 @@ const WhyChooseUs = () => {
     <div className="bg-white py-12 px-4">
       <div className="container mx-auto">
         <PageTitle title="Why Choose Us" />
-        <p className="text-center text-lg text-primary-text mt-12 w-full md:w-[70%] xl:w-[45%] mx-auto">
+        <p className="text-center text-lg text-primary-text mt-8 w-full md:w-[70%] xl:w-[45%] mx-auto">
           We recognise the unique challenges of sourcing and managing contingent
           roles in the healthcare sector. We offer award-winning workforce
           solutions designed to fit your budget and priorities.
         </p>
         <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-8 lg:gap-12 mt-8">
-          <div className="flex flex-col gap-6 max-w-full sm:max-w-[60%] lg:max-w-[35%] mb-8 lg:mb-0">
+          <div className="flex flex-col gap-6 max-w-full sm:max-w-[60%] lg:max-w-[35%] lg:mb-0">
             {reasons.map((item) => (
               <div key={item.title} className="flex items-start space-x-2">
                 <span>

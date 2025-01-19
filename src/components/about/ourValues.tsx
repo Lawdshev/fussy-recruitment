@@ -59,7 +59,7 @@ const OurValues = () => {
     <div className="bg-[#FFFCF5] py-12 px-4">
       <div className="container mx-auto text-center">
         <PageTitle title="Our Values" />
-        <p className="text-center text-primary-text mt-12 w-full md:w-[60%] mx-auto">
+        <p className="text-center text-primary-text mt-8 w-full md:w-[60%] mx-auto">
           At Fussy Recruitment, our values guide everything we do. They are the
           foundation of our commitment to delivering exceptional service and
           building solid and lasting partnerships.

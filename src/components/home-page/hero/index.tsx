@@ -97,7 +97,7 @@ function Index() {
           <Image
             src={covid}
             alt="covid 19 frontline healthcare essential workers"
-            className="mx-auto lg:w-[80%] xl:w-[100%] 2xl:w-[80%] max-w-[561px] mb-4"
+            className="mx-auto w-full lg:w-[80%] xl:w-[100%] 2xl:w-[80%] max-w-[561px] mb-4"
           />
           <motion.div
             className="absolute bottom-4  left-4 md:left-24 lg:left-28 xl:-bottom-12 xl:left-8 2xl:bottom-0 2xl:left-20"
