@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import InputField from "../ui/button/input/input";
-import { ApplicationFormType } from "./formType";
+
 import Dropdown from "../ui/button/dropdown/dropdown";
 import FileUpload from "../ui/button/fileUpload/fileUpload";
 import { useFormContext } from "react-hook-form";
+import { ApplicationFormType } from "@/validation/applicationSchema";
 
 export const QualificationForm = () => {
   const { register, setValue, watch } = useFormContext<ApplicationFormType>();
@@ -75,7 +76,6 @@ export const QualificationForm = () => {
       <FileUpload
         defaultValue={certificationValue}
         label="Upload Certification  (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        // formFile={formValues.qualification.certification}
         onFileSelect={(file) => {
           setValue("qualification.certification", file);
         }}
@@ -83,7 +83,6 @@ export const QualificationForm = () => {
       <FileUpload
         defaultValue={otherDocumentValue}
         label="Other Document (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        // formFile={formValues.qualification.otherDocument}
         onFileSelect={(file) => {
           setValue("qualification.otherDocument", file);
         }}

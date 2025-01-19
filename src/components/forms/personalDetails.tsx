@@ -3,7 +3,7 @@ import { BiInfoCircle } from "react-icons/bi";
 import InputField from "../ui/button/input/input";
 import Dropdown from "../ui/button/dropdown/dropdown";
 import { useFormContext } from "react-hook-form";
-import { ApplicationFormType } from "./formType";
+import { ApplicationFormType } from "@/validation/applicationSchema";
 
 export const PersonalDetailsForm = () => {
   const { register, setValue, getValues } =

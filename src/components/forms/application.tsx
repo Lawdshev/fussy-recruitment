@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Step } from "../stepper/step";
 import Button from "../ui/button/btn";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { ApplicationFormType } from "./formType";
 import { PersonalDetailsForm } from "./personalDetails";
 import { QualificationForm } from "./qualification";
 import { HistoryForm } from "./history";
@@ -12,6 +11,11 @@ import { fetchAPI } from "@/utils/fetchApi";
 import SuccessModal from "../modals/successModal";
 import ErrorModal from "../modals/errorModal";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  ApplicationFormType,
+  applicationFormValidationSchema,
+} from "@/validation/applicationSchema";
 
 const steps = [
   "Personal Details",
@@ -27,6 +31,7 @@ export const ApplicationForm = () => {
 
   const closeModal = () => setIsModalOpen(false);
   const applicationFormData = useForm<ApplicationFormType>({
+    resolver: yupResolver(applicationFormValidationSchema),
     defaultValues: {
       personalDetails: {
         positionOfInterest: "",
@@ -69,7 +74,19 @@ export const ApplicationForm = () => {
         conviction: "",
       },
     },
+    mode: "all",
   });
+  const {
+    formState: { errors, isSubmitting, isValid },
+    handleSubmit,
+  } = applicationFormData;
+
+  const isStepValid = () => {
+    const currentStepFields = steps[activeStep];
+    const currentStepErrors =
+      errors[currentStepFields as keyof ApplicationFormType];
+    return !currentStepErrors;
+  };
 
   const onSubmit: SubmitHandler<ApplicationFormType> = async (data) => {
     try {
@@ -103,7 +120,7 @@ export const ApplicationForm = () => {
   };
   return (
     <FormProvider {...applicationFormData}>
-      <form  onSubmit={applicationFormData.handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex  items-center flex-wrap md:flex-nowrap gap-4 md:gap-0  md:space-x-4 xl:space-x-10 w-full lg:mt-20 mb-[4.5em] ">
           {steps.map((step, index) => (
             <Step
@@ -137,23 +154,26 @@ export const ApplicationForm = () => {
           )}
           {activeStep === steps.length - 1 ? (
             <Button
-              text="Submit"
-              bgColor="bg-[#EBEBEB]"
+              text={isSubmitting ? "Submitting" : "Submit"}
+              bgColor={!isValid ? "bg-[#EBEBEB]" : "bg-black"}
               type="submit"
-              textColor="text-[#C0C0C0]"
-              // disabled
-              size="py-[6px] px-4  text-base "
+              textColor={!isValid ? "text-[#C0C0C0]" : "text-white"}
+              disabled={!isValid}
+              size="py-[6px] px-4 text-base"
             />
           ) : (
             <div className="justify-self-end">
               <Button
                 onClick={() => {
-                  setActiveStep(activeStep + 1);
+                  if (isStepValid()) {
+                    setActiveStep(activeStep + 1);
+                  }
                 }}
                 text="Next"
-                bgColor="bg-[#000000]"
-                type={"button"}
-                textColor="text-[#FEFEFE]"
+                bgColor={!isStepValid() ? "bg-[#EBEBEB]" : "bg-black"}
+                type="button"
+                textColor={!isStepValid() ? "text-[#C0C0C0]" : "text-white"}
+                disabled={!isStepValid()}
                 icon={<FaArrowRightLong />}
                 size="py-[6px] px-4 outline outline-2 outline-black  text-base"
               />

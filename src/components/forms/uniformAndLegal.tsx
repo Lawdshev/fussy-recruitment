@@ -5,9 +5,8 @@ import { LegalLabel } from "./legalLabel";
 import ImageUploadIcon from "@/assets/svgs/imageUploadIcon.svg";
 import { useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { ApplicationFormType } from "./formType";
 import { BiLoaderCircle, BiX } from "react-icons/bi";
-// import { CloudinaryUploadResponse } from "../ui/button/fileUpload/type";
+import { ApplicationFormType } from "@/validation/applicationSchema";
 
 export const UniformAndLegalForm = () => {
   const { setValue, watch } = useFormContext<ApplicationFormType>();

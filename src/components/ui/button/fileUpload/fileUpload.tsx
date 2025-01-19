@@ -3,12 +3,12 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import UploadIcon from "@/assets/svgs/uploadIcon.svg";
 import { BiLoaderCircle, BiTrash } from "react-icons/bi";
-import { CloudinaryUploadResponse } from "./type";
+import { CloudinaryFileInfo } from "./type";
 
 interface FileUploadProps {
-  onFileSelect?: (data: CloudinaryUploadResponse) => void;
+  onFileSelect?: (data: CloudinaryFileInfo) => void;
   label: string;
-  defaultValue: CloudinaryUploadResponse | null;
+  defaultValue: CloudinaryFileInfo | null;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
@@ -16,9 +16,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   label,
   defaultValue,
 }) => {
-  const [file, setFile] = useState<CloudinaryUploadResponse | null>(
-    defaultValue
-  );
+  const [file, setFile] = useState<CloudinaryFileInfo | null>(defaultValue);
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string>("");
   // const [imageUrl, setImageUrl] = useState<string | null>(null);
