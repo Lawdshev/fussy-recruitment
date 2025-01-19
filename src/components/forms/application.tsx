@@ -11,6 +11,7 @@ import { UniformAndLegalForm } from "./uniformAndLegal";
 import { fetchAPI } from "@/utils/fetchApi";
 import SuccessModal from "../modals/successModal";
 import ErrorModal from "../modals/errorModal";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const steps = [
   "Personal Details",
@@ -102,8 +103,8 @@ export const ApplicationForm = () => {
   };
   return (
     <FormProvider {...applicationFormData}>
-      <form onSubmit={applicationFormData.handleSubmit(onSubmit)}>
-        <div className="flex  items-center  space-x-10 w-full lg:mt-20 mb-[4.5em] ">
+      <form  onSubmit={applicationFormData.handleSubmit(onSubmit)}>
+        <div className="flex  items-center flex-wrap md:flex-nowrap gap-4 md:gap-0  md:space-x-4 xl:space-x-10 w-full lg:mt-20 mb-[4.5em] ">
           {steps.map((step, index) => (
             <Step
               key={index}
@@ -117,7 +118,7 @@ export const ApplicationForm = () => {
         </div>
         <div>{renderFields()}</div>
         <div
-          className={`flex ${
+          className={`flex  items-center ${
             activeStep > 0 ? "justify-between" : "justify-end"
           } mt-14`}
         >
@@ -130,7 +131,7 @@ export const ApplicationForm = () => {
               size="py-[6px] px-4  text-base"
               textColor="text-black"
               border={"border-2"}
-              icon={<span>&#8592;</span>}
+              icon={<FaArrowLeftLong />}
               flexPosition="flex-row-reverse"
             />
           )}
@@ -153,8 +154,8 @@ export const ApplicationForm = () => {
                 bgColor="bg-[#000000]"
                 type={"button"}
                 textColor="text-[#FEFEFE]"
-                icon={<span>&#8594;</span>}
-                size="py-[6px] px-4  text-base"
+                icon={<FaArrowRightLong />}
+                size="py-[6px] px-4 outline outline-2 outline-black  text-base"
               />
             </div>
           )}

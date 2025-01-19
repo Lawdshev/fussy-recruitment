@@ -19,7 +19,7 @@ export const QualificationForm = () => {
 
   return (
     <div className="flex flex-col space-y-4 w-full">
-      <p className="font-bold text-lg">Qualification</p>
+      <p className="font-bold text-lg text-primary-text">Qualification</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InputField
           label="Highest Qualification"
