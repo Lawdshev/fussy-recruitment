@@ -55,16 +55,20 @@ export const PersonalDetailsForm = () => {
           label="Position of Interest"
           options={[
             {
-              label: "Frontend Developer",
-              value: "Frontend Developer",
+              label: "Nurse",
+              value: "nurse",
             },
             {
-              label: "Backend Developer",
-              value: "Backend Developer",
+              label: "Care Assistant",
+              value: "care assistant",
             },
             {
-              label: "Fullstack Developer",
-              value: "Fullstack Developer",
+              label: "Support Worker(Adults)",
+              value: "support worker(adults)",
+            },
+            {
+              label: "Support Worker(Children)",
+              value: "support worker(children)",
             },
           ]}
           onChange={(value) => {

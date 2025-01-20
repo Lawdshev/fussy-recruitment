@@ -6,15 +6,15 @@ import ImageUploadIcon from "@/assets/svgs/imageUploadIcon.svg";
 import { useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { ApplicationFormType } from "./formType";
-import { BiX } from "react-icons/bi";
+import { BiLoaderCircle, BiX } from "react-icons/bi";
+// import { CloudinaryUploadResponse } from "../ui/button/fileUpload/type";
 
 export const UniformAndLegalForm = () => {
-  const { setValue, watch, getValues } = useFormContext<ApplicationFormType>();
-  const formValues = getValues();
+  const { setValue, watch } = useFormContext<ApplicationFormType>();
+  const photo = watch("uniformAndLegal.photo");
   const [error, setError] = useState<string>("");
-  const [file, setFile] = useState<File | null>(
-    formValues.uniformAndLegal.photo
-  );
+
+  const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,30 +36,42 @@ export const UniformAndLegalForm = () => {
     }
   };
 
-  const validateFile = (uploadedFile: File) => {
+  const validateFile = async (uploadedFile: File) => {
     const allowedTypes = [, "image/png", "image/jpeg"];
     const maxSize = 5 * 1024 * 1024; // 5MB
 
-    console.log({
-      uploadedFile,
-    });
-
     if (!allowedTypes.includes(uploadedFile.type)) {
       setError("Only PDF, PNG, and JPG formats are allowed.");
-      setFile(null);
+      // setFile(null);
       return;
     }
 
     if (uploadedFile.size > maxSize) {
       setError("File size must not exceed 5MB.");
-      setFile(null);
+      // setFile(null);
       return;
     }
+    const formData = new FormData();
 
+    formData.append("file", uploadedFile);
+    formData.append("upload_preset", "fussy recruitment");
+    formData.append("cloud_name", "magnaibra");
+    setIsUploading(true);
+
+    const res = await fetch(
+      " https://api.cloudinary.com/v1_1/magnaibra/auto/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const cloudImageData = await res.json();
     setError("");
-    setFile(uploadedFile);
+    setValue("uniformAndLegal.photo", cloudImageData);
+    setIsUploading(false);
+    // setFile(cloudImageData);
 
-    setValue("uniformAndLegal.photo", uploadedFile);
+    // setFile(uploadedFile);
   };
 
   const uniformTypeForm = watch("uniformAndLegal.uniformType");
@@ -106,9 +118,7 @@ export const UniformAndLegalForm = () => {
   const handleClick = () => {
     fileInputRef.current?.click();
   };
-  console.log({
-    file,
-  });
+
   return (
     <div className="flex flex-col space-y-16 w-full">
       <div className="border border-[#A7A7A9] p-8 rounded-lg flex flex-col space-y-10">
@@ -145,42 +155,49 @@ export const UniformAndLegalForm = () => {
             onDrop={handleDrop}
             onClick={handleClick}
           >
-            {file && (
+            {photo && (
               <BiX
-                onClick={() => setFile(null)}
+                onClick={() => setValue("uniformAndLegal.photo", null)}
                 size={24}
                 className="absolute -top-0 -right-0 z-50 cursor-pointer"
               />
             )}
-            {!file ? (
+            {!photo ? (
               <>
-                <Image src={ImageUploadIcon} alt={"upload icon"} />
+                {isUploading ? (
+                  <p>
+                    <BiLoaderCircle />
+                  </p>
+                ) : (
+                  <>
+                    <Image src={ImageUploadIcon} alt={"upload icon"} />
 
-                <p className="mt-2 text-xs text-black">
-                  <span className="font-medium  cursor-pointer underline-offset-1 underline">
-                    Click to upload
-                  </span>{" "}
-                  or drag and drop
-                </p>
-                <input
-                  type="file"
-                  className="hidden"
-                  ref={fileInputRef}
-                  onChange={handleFileUpload}
-                  accept="image/png, image/jpeg"
-                />
+                    <p className="mt-2 text-xs text-black">
+                      <span className="font-medium  cursor-pointer underline-offset-1 underline">
+                        Click to upload
+                      </span>{" "}
+                      or drag and drop
+                    </p>
+                    <input
+                      type="file"
+                      className="hidden"
+                      ref={fileInputRef}
+                      onChange={handleFileUpload}
+                      accept="image/png, image/jpeg"
+                    />
+                  </>
+                )}
               </>
             ) : (
               <div className=" flex flex-col space-y-2 items-center">
                 <div className="text-sm text-gray-700">
-                  {file.type.startsWith("image/") && (
-                    <Image
-                      src={URL.createObjectURL(file)}
-                      alt="Uploaded preview"
-                      fill
-                      className="mb-4 rounded w-full h-full"
-                    />
-                  )}
+                  <Image
+                    src={photo.url}
+                    alt="Uploaded preview"
+                    fill
+                    className="mb-4 rounded w-full h-full"
+                  />
+
                   {/* <p>{file.name}</p>
                   <p className="text-green-500">File uploaded successfully!</p> */}
                 </div>

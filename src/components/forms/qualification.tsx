@@ -7,15 +7,12 @@ import FileUpload from "../ui/button/fileUpload/fileUpload";
 import { useFormContext } from "react-hook-form";
 
 export const QualificationForm = () => {
-  const { register, setValue, getValues, watch } =
-    useFormContext<ApplicationFormType>();
+  const { register, setValue, watch } = useFormContext<ApplicationFormType>();
 
-  const formValues = getValues();
-
-  const cv = watch("qualification.cv");
-  console.log({
-    cv,
-  });
+  const cvValue = watch("qualification.cv");
+  const certificationValue = watch("qualification.certification");
+  const otherDocumentValue = watch("qualification.otherDocument");
+  const ukWorkEligibilityValue = watch("qualification.ukWorkEligibility");
 
   return (
     <div className="flex flex-col space-y-4 w-full">
@@ -40,7 +37,7 @@ export const QualificationForm = () => {
           {...register("qualification.spokenLanguages")}
         />
         <Dropdown
-          defaultValue={formValues.qualification.ukWorkEligibility}
+          defaultValue={ukWorkEligibilityValue}
           label="Eligibility to Work in the UK"
           options={[
             {
@@ -67,25 +64,26 @@ export const QualificationForm = () => {
       </div>
 
       <FileUpload
-        formFile={cv}
+        defaultValue={cvValue}
         onFileSelect={(file) => {
           setValue("qualification.cv", file);
-          console.log(file);
         }}
         label=" Upload CV (The file must not exceed 5MB and must be in the accepted formats:
               PDF, DOC, or DOCX)"
       />
 
       <FileUpload
+        defaultValue={certificationValue}
         label="Upload Certification  (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        formFile={formValues.qualification.certification}
+        // formFile={formValues.qualification.certification}
         onFileSelect={(file) => {
           setValue("qualification.certification", file);
         }}
       />
       <FileUpload
+        defaultValue={otherDocumentValue}
         label="Other Document (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        formFile={formValues.qualification.otherDocument}
+        // formFile={formValues.qualification.otherDocument}
         onFileSelect={(file) => {
           setValue("qualification.otherDocument", file);
         }}
