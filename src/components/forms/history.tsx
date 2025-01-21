@@ -2,6 +2,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import InputField from "../ui/button/input/input";
 import { BiX } from "react-icons/bi";
 import { ApplicationFormType } from "@/validation/applicationSchema";
+import { FaPlus } from "react-icons/fa";
 
 export const HistoryForm = () => {
   const { register, watch } = useFormContext<ApplicationFormType>();
@@ -63,21 +64,23 @@ export const HistoryForm = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-4 w-full">
-      <p className="font-bold text-lg">History</p>
-      <div className="flex justify-end mb-12">
+    <div className="flex flex-col space-y-4 w-full ">
+      <div className="flex justify-between items-center mb-8">
+        <p className="font-bold text-lg text-primary-text">History</p>
         <button
           onClick={addmoreHistory}
-          className="rounded-xl px-3 py-1.5 text-white bg-black text-lg font-medium"
+          className="px-3 py-1.5 flex items-center space-x text-black font-medium"
           type="button"
         >
-          Add more
+          <FaPlus />
+          <span>Add more</span>
         </button>
       </div>
+
       <div className="flex flex-col space-y-14 w-full items-center">
-        {controlledHistoryFields.map((history, index) => (
+        {controlledHistoryFields.map((_, index) => (
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
+            className="block md:grid grid-cols-1 md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0 w-full"
             key={index}
           >
             <div>
@@ -101,6 +104,7 @@ export const HistoryForm = () => {
             <InputField
               label="Date To"
               type="date"
+              required
               {...register(`experience.history.${index}.dateTo`)}
             />
 
@@ -128,20 +132,25 @@ export const HistoryForm = () => {
             )}
           </div>
         ))}
-        <div className="w-4/5 border-t border-[#C0C0C0]"></div>
+        <div className="w-4/5 border-t my-7 border-[#C0C0C0]"></div>
         <div className="flex flex-col space-y-4 w-full">
-          <p className="font-bold text-lg">Reference</p>
-          <div className="flex justify-end mb-12">
+          <div className="flex justify-between items-center mb-8">
+            <p className="font-bold text-lg text-primary-text">Reference</p>
             <button
               onClick={addmoreReference}
-              className="rounded-xl px-3 py-1.5 text-white bg-black text-lg font-medium"
+              className="px-3 py-1.5 flex items-center space-x text-black font-medium"
               type="button"
             >
-              Add more
+              <FaPlus />
+              <span>Add more</span>
             </button>
           </div>
+
           {controlledReferenceFields.map((_, index) => (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6" key={index}>
+            <div
+              className="block md:grid grid-cols-1 md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0"
+              key={index}
+            >
               <InputField
                 label="First Name"
                 {...register(`experience.reference.${index}.firstName`)}
@@ -150,6 +159,7 @@ export const HistoryForm = () => {
 
               <InputField
                 label="Last Name"
+                required
                 {...register(`experience.reference.${index}.lastName`)}
               />
 
