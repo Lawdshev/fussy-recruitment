@@ -128,7 +128,7 @@ export const UniformAndLegalForm = () => {
             not exceed 5MB)
           </p>
         </div>
-        <div className="flex space-x-24 h-auto w-full">
+        <div className="flex flex-col xl:flex-row gap-8 xl:space-x-24 h-auto w-full">
           <div className="flex flex-col space-y-4 ">
             <p className="font-bold text-lg text-primary-text ">Tips</p>
             <ul className="list-disc pl-5 text-sm text-[#242424] flex flex-col space-y-1">
@@ -148,7 +148,7 @@ export const UniformAndLegalForm = () => {
             </ul>
           </div>
           <div
-            className={`relative  bg-[#F5F5F5] max-w-[300px] rounded-lg h-96 flex flex-col items-center justify-center text-center px-14 flex-1
+            className={`relative  bg-[#F5F5F5] max-w-[300px] rounded-lg min-h-[500px] xl:h-96 flex flex-col items-center justify-center text-center px-14 flex-1
        `}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
@@ -215,8 +215,8 @@ export const UniformAndLegalForm = () => {
             Upload Your Measurements for Uniform Fitting
           </p>
         </div>
-        <div className="flex space-x-16">
-          <div className="flex flex-col space-y-6 ">
+        <div className="flex flex-col md:flex-row gap-6 md:space-x-16">
+          <div className="flex flex-col space-y-3 md:space-y-6 ">
             <p className="text-primary-text font-medium">Uniform Type</p>
             <div className="flex space-x-4">
               <Checkbox
@@ -235,7 +235,7 @@ export const UniformAndLegalForm = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-3 md:space-y-6">
             <p className="text-primary-text font-medium">Uniform Size</p>
             <div className="flex space-x-4">
               <Checkbox
@@ -261,7 +261,7 @@ export const UniformAndLegalForm = () => {
         </div>
       </div>
       <div className="border border-[#A7A7A9] p-8 rounded-lg flex flex-col space-y-10">
-        <p className="font-bold text-lg text-primary-text">Lega Declaration</p>
+        <p className="font-bold text-lg text-primary-text">Legal Declaration</p>
         <div className="flex flex-col space-y-8">
           <LegalLabel
             label={
