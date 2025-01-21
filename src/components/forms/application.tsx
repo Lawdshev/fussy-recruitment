@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import { Step } from "../stepper/step";
 import Button from "../ui/button/btn";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import {
+  FormProvider,
+  FormState,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import { PersonalDetailsForm } from "./personalDetails";
 import { QualificationForm } from "./qualification";
 import { HistoryForm } from "./history";
@@ -16,6 +21,10 @@ import {
   ApplicationFormType,
   applicationFormValidationSchema,
 } from "@/validation/applicationSchema";
+
+export interface ApplicationFormErrorProps {
+  error?: FormState<ApplicationFormType>["errors"];
+}
 
 const steps = [
   "Personal Details",
@@ -40,9 +49,18 @@ export const ApplicationForm = () => {
       },
       qualification: {
         ukWorkEligibility: "",
-        cv: null,
-        otherDocument: null,
-        certification: null,
+        cv: {
+          url: "",
+          original_filename: "",
+        },
+        otherDocument: {
+          url: "",
+          original_filename: "",
+        },
+        certification: {
+          url: "",
+          original_filename: "",
+        },
       },
       experience: {
         history: [
@@ -64,7 +82,10 @@ export const ApplicationForm = () => {
         ],
       },
       uniformAndLegal: {
-        photo: null,
+        photo: {
+          url: "",
+          original_filename: "",
+        },
         uniformType: "",
         uniformSize: "",
         fitness: "",
@@ -79,6 +100,7 @@ export const ApplicationForm = () => {
   const {
     formState: { errors, isSubmitting, isValid },
     handleSubmit,
+    trigger,
   } = applicationFormData;
 
   const isStepValid = () => {
@@ -107,16 +129,39 @@ export const ApplicationForm = () => {
   const renderFields = () => {
     switch (activeStep) {
       case 0:
-        return <PersonalDetailsForm />;
+        return <PersonalDetailsForm error={errors} />;
       case 1:
-        return <QualificationForm />;
+        return <QualificationForm error={errors} />;
       case 2:
-        return <HistoryForm />;
+        return <HistoryForm error={errors} />;
       case 3:
-        return <UniformAndLegalForm />;
+        return <UniformAndLegalForm error={errors} />;
       default:
         return null;
     }
+  };
+
+  console.log({
+    errors,
+    isValid,
+  });
+
+  const handleNextStep = () => {
+    const stepValidationKeys = [
+      "personalDetails",
+      "qualification",
+      "experience",
+      "uniformAndLegal",
+    ];
+
+    trigger(stepValidationKeys[activeStep] as keyof ApplicationFormType).then(
+      (isValid) => {
+        if (isValid) {
+          setActiveStep((prevStep) => prevStep + 1);
+        }
+      }
+    );
+    // });
   };
   return (
     <FormProvider {...applicationFormData}>
@@ -155,20 +200,18 @@ export const ApplicationForm = () => {
           {activeStep === steps.length - 1 ? (
             <Button
               text={isSubmitting ? "Submitting" : "Submit"}
-              bgColor={!isValid ? "bg-[#EBEBEB]" : "bg-black"}
+              // bgColor={!isValid ? "bg-[#EBEBEB]" : "bg-black"}
+              bgColor={"bg-black"}
               type="submit"
-              textColor={!isValid ? "text-[#C0C0C0]" : "text-white"}
-              disabled={!isValid}
+              // textColor={!isValid ? "text-[#C0C0C0]" : "text-white"}
+              textColor={"text-white"}
+              // disabled={!isValid}
               size="py-[6px] px-4 text-base"
             />
           ) : (
             <div className="justify-self-end">
               <Button
-                onClick={() => {
-                  if (isStepValid()) {
-                    setActiveStep(activeStep + 1);
-                  }
-                }}
+                onClick={handleNextStep}
                 text="Next"
                 bgColor={!isStepValid() ? "bg-[#EBEBEB]" : "bg-black"}
                 type="button"

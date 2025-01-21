@@ -30,27 +30,22 @@ export const applicationFormValidationSchema = Yup.object().shape({
       "Personal certifications are required"
     ),
     yearsOfExperience: Yup.string().required("Years of experience is required"),
-    spokenLanguages: Yup.mixed()
-      .required("Spoken languages are required")
-      .test(
-        "is-valid",
-        "Spoken languages must be a string or a number",
-        (value) => typeof value === "string" || typeof value === "number"
-      ),
+    spokenLanguages: Yup.string().required("Spoken languages are required"),
     ukWorkEligibility: Yup.string().required("UK work eligibility is required"),
     skillsOrTraining: Yup.string().required("Skills or training is required"),
     cv: Yup.object()
-      .nullable()
+      .required("upload CV document")
       .shape({
-        url: Yup.string().url("Invalid CV URL").required("CV URL is required"),
+        url: Yup.string().url("Invalid CV URL").required("upload CV document"),
         original_filename: Yup.string().required("CV public ID is required"),
       }),
+
     certification: Yup.object()
-      .nullable()
+      .required("upload certificate document")
       .shape({
         url: Yup.string()
           .url("Invalid certification URL")
-          .required("Certification URL is required"),
+          .required("upload certificate document"),
         original_filename: Yup.string().required(
           "Certification public ID is required"
         ),
@@ -58,12 +53,8 @@ export const applicationFormValidationSchema = Yup.object().shape({
     otherDocument: Yup.object()
       .nullable()
       .shape({
-        url: Yup.string()
-          .url("Invalid document URL")
-          .required("Document URL is required"),
-        original_filename: Yup.string().required(
-          "Document public ID is required"
-        ),
+        url: Yup.string().url("Invalid document URL").required(),
+        original_filename: Yup.string().required(),
       }),
   }),
   experience: Yup.object().shape({
@@ -96,14 +87,12 @@ export const applicationFormValidationSchema = Yup.object().shape({
       .required(),
   }),
   uniformAndLegal: Yup.object().shape({
-    photo: Yup.object()
-      .nullable()
-      .shape({
-        url: Yup.string()
-          .url("Invalid photo URL")
-          .required("Photo URL is required"),
-        original_filename: Yup.string().required("Photo public ID is required"),
-      }),
+    photo: Yup.object().shape({
+      url: Yup.string()
+        .url("Invalid photo URL")
+        .required("Photo URL is required"),
+      original_filename: Yup.string().required("Photo public ID is required"),
+    }),
     uniformType: Yup.string().required("Uniform type is required"),
     uniformSize: Yup.string().required("Uniform size is required"),
     fitness: Yup.string().required("Fitness information is required"),

@@ -4,22 +4,28 @@ import InputField from "../ui/button/input/input";
 import Dropdown from "../ui/button/dropdown/dropdown";
 import { useFormContext } from "react-hook-form";
 import { ApplicationFormType } from "@/validation/applicationSchema";
+import { ApplicationFormErrorProps } from "./application";
 
-export const PersonalDetailsForm = () => {
+export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
   const { register, setValue, getValues } =
     useFormContext<ApplicationFormType>();
   const formValues = getValues();
+
   return (
     <div className="flex flex-col space-y-4">
       <p className="font-bold text-lg text-primary-text">Personal Details</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InputField
           label="First Name"
+          required
           {...register("personalDetails.firstName")}
+          error={error?.personalDetails?.firstName?.message}
         />
         <InputField
           label="Last Name"
+          required
           {...register("personalDetails.lastName")}
+          error={error?.personalDetails?.lastName?.message}
         />
         <div>
           <InputField
@@ -33,10 +39,17 @@ export const PersonalDetailsForm = () => {
             <p>Leave blank if you have no middle name</p>{" "}
           </span>
         </div>
-        <InputField label="Email" {...register("personalDetails.email")} />
+        <InputField
+          label="Email"
+          {...register("personalDetails.email")}
+          required
+          error={error?.personalDetails?.email?.message}
+        />
         <InputField
           label="Phone number"
           {...register("personalDetails.phoneNumber")}
+          required
+          error={error?.personalDetails?.email?.message}
         />
         <InputField
           label="House Name or Number"
@@ -45,6 +58,8 @@ export const PersonalDetailsForm = () => {
         <InputField
           label="Street Address"
           {...register("personalDetails.streetAddress")}
+          required
+          error={error?.personalDetails?.email?.message}
         />
         <InputField label="City" {...register("personalDetails.city")} />
         <InputField
@@ -52,6 +67,7 @@ export const PersonalDetailsForm = () => {
           {...register("personalDetails.postCode")}
         />
         <Dropdown
+          required
           label="Position of Interest"
           options={[
             {
@@ -75,6 +91,7 @@ export const PersonalDetailsForm = () => {
             setValue("personalDetails.positionOfInterest", value);
           }}
           defaultValue={formValues.personalDetails.positionOfInterest}
+          error={error?.personalDetails?.email?.message}
         />
         <Dropdown
           label="Availability"
@@ -96,6 +113,8 @@ export const PersonalDetailsForm = () => {
             setValue("personalDetails.availability", value);
           }}
           defaultValue={formValues.personalDetails.availability}
+          required
+          error={error?.personalDetails?.email?.message}
         />
       </div>
     </div>
