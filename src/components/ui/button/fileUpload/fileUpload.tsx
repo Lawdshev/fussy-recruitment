@@ -115,7 +115,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         {!file?.url ? (
           <>
             {isUploading ? (
-              <div className="flex justify-center flex-col items-center space-y-2">
+              <div className="flex justify-center flex-col items-center space-y-2 text-primary-text">
                 <BiLoaderCircle />
                 <p>uploading...</p>
               </div>
@@ -146,14 +146,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
               <p>{file?.original_filename}</p>
               <p className="text-green-500">File uploaded successfully!</p>
             </div>
-            <BiTrash
-              onClick={() =>
-                setFile({
-                  url: "",
-                  original_filename: "",
-                })
-              }
-            />
+            <div className="text-primary-text">
+              <BiTrash
+                onClick={() =>
+                  setFile({
+                    url: "",
+                    original_filename: "",
+                  })
+                }
+              />
+            </div>
           </div>
         )}
       </div>
