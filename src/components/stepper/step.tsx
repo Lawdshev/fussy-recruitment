@@ -35,7 +35,9 @@ export const Step = ({
         )}
         <span className="whitespace-nowrap ">{label}</span>
       </div>
-      {!isLastChild && <div className="h-[1px] w-6 xl:w-16  bg-[#C0C0C0] "></div>}
+      {!isLastChild && (
+        <div className="hidden md:block h-[1px] md:w-6 xl:w-16  bg-[#C0C0C0] "></div>
+      )}
     </div>
   );
 };

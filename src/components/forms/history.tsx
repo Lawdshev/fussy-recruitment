@@ -1,11 +1,11 @@
-"use client";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import InputField from "../ui/button/input/input";
-import { ApplicationFormType } from "./formType";
 import { BiX } from "react-icons/bi";
-import { FaPlus } from "react-icons/fa6";
+import { ApplicationFormType } from "@/validation/applicationSchema";
+import { FaPlus } from "react-icons/fa";
+import { ApplicationFormErrorProps } from "./application";
 
-export const HistoryForm = () => {
+export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
   const { register, watch } = useFormContext<ApplicationFormType>();
   const {
     fields: histories,
@@ -65,7 +65,7 @@ export const HistoryForm = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-4 w-full">
+    <div className="flex flex-col space-y-4 w-full ">
       <div className="flex justify-between items-center mb-8">
         <p className="font-bold text-lg text-primary-text">History</p>
         <button
@@ -74,15 +74,14 @@ export const HistoryForm = () => {
           type="button"
         >
           <FaPlus />
-          <span>
-            Add more
-          </span>
+          <span>Add more</span>
         </button>
       </div>
+
       <div className="flex flex-col space-y-14 w-full items-center">
-        {controlledHistoryFields.map((history, index) => (
+        {controlledHistoryFields.map((_, index) => (
           <div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
+            className="block md:grid grid-cols-1 md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0 w-full"
             key={index}
           >
             <div>
@@ -91,6 +90,7 @@ export const HistoryForm = () => {
                 label="Date From"
                 {...register(`experience.history.${index}.dateFrom`)}
                 required
+                error={error?.experience?.history?.[index]?.dateFrom?.message}
               />
               <span className="flex space-x-2 items-center text-sm text-primary-text mt-2 ">
                 <span>
@@ -106,19 +106,25 @@ export const HistoryForm = () => {
             <InputField
               label="Date To"
               type="date"
+              required
               {...register(`experience.history.${index}.dateTo`)}
+              error={error?.experience?.history?.[index]?.dateTo?.message}
             />
 
             <InputField
               label="Name of Employer"
               required
               {...register(`experience.history.${index}.nameOfEmployer`)}
+              error={
+                error?.experience?.history?.[index]?.nameOfEmployer?.message
+              }
             />
 
             <InputField
               label="Job Title"
               {...register(`experience.history.${index}.jobTitle`)}
               required
+              error={error?.experience?.history?.[index]?.jobTitle?.message}
             />
             {controlledHistoryFields.length > 1 && (
               <div className="col-span-2 flex justify-end mb-12 ">
@@ -133,7 +139,7 @@ export const HistoryForm = () => {
             )}
           </div>
         ))}
-        <div className="w-4/5 border-t border-[#C0C0C0]"></div>
+        <div className="w-4/5 border-t my-7 border-[#C0C0C0]"></div>
         <div className="flex flex-col space-y-4 w-full">
           <div className="flex justify-between items-center mb-8">
             <p className="font-bold text-lg text-primary-text">Reference</p>
@@ -143,33 +149,45 @@ export const HistoryForm = () => {
               type="button"
             >
               <FaPlus />
-              <span>
-                Add more
-              </span>
+              <span>Add more</span>
             </button>
           </div>
+
           {controlledReferenceFields.map((_, index) => (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full" key={index}>
+            <div
+              className="block md:grid grid-cols-1 md:grid-cols-2 md:gap-6 space-y-6 md:space-y-0"
+              key={index}
+            >
               <InputField
                 label="First Name"
                 {...register(`experience.reference.${index}.firstName`)}
                 required
+                error={
+                  error?.experience?.reference?.[index]?.firstName?.message
+                }
               />
+
               <InputField
                 label="Last Name"
+                required
                 {...register(`experience.reference.${index}.lastName`)}
+                error={error?.experience?.reference?.[index]?.lastName?.message}
               />
 
               <InputField
                 label="Job Title"
                 {...register(`experience.reference.${index}.jobTitle`)}
                 required
+                error={error?.experience?.reference?.[index]?.jobTitle?.message}
               />
 
               <InputField
                 label="Phone Number"
                 {...register(`experience.reference.${index}.phoneNumber`)}
                 required
+                error={
+                  error?.experience?.reference?.[index]?.phoneNumber?.message
+                }
               />
 
               {controlledReferenceFields.length > 1 && (

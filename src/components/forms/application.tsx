@@ -2,8 +2,12 @@
 import React, { useState } from "react";
 import { Step } from "../stepper/step";
 import Button from "../ui/button/btn";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { ApplicationFormType } from "./formType";
+import {
+  FormProvider,
+  FormState,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import { PersonalDetailsForm } from "./personalDetails";
 import { QualificationForm } from "./qualification";
 import { HistoryForm } from "./history";
@@ -12,6 +16,15 @@ import { fetchAPI } from "@/utils/fetchApi";
 import SuccessModal from "../modals/successModal";
 import ErrorModal from "../modals/errorModal";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  ApplicationFormType,
+  applicationFormValidationSchema,
+} from "@/validation/applicationSchema";
+
+export interface ApplicationFormErrorProps {
+  error?: FormState<ApplicationFormType>["errors"];
+}
 
 const steps = [
   "Personal Details",
@@ -27,6 +40,7 @@ export const ApplicationForm = () => {
 
   const closeModal = () => setIsModalOpen(false);
   const applicationFormData = useForm<ApplicationFormType>({
+    resolver: yupResolver(applicationFormValidationSchema),
     defaultValues: {
       personalDetails: {
         positionOfInterest: "",
@@ -35,9 +49,18 @@ export const ApplicationForm = () => {
       },
       qualification: {
         ukWorkEligibility: "",
-        cv: null,
-        otherDocument: null,
-        certification: null,
+        cv: {
+          url: "",
+          original_filename: "",
+        },
+        otherDocument: {
+          url: "",
+          original_filename: "",
+        },
+        certification: {
+          url: "",
+          original_filename: "",
+        },
       },
       experience: {
         history: [
@@ -59,7 +82,10 @@ export const ApplicationForm = () => {
         ],
       },
       uniformAndLegal: {
-        photo: null,
+        photo: {
+          url: "",
+          original_filename: "",
+        },
         uniformType: "",
         uniformSize: "",
         fitness: "",
@@ -69,7 +95,20 @@ export const ApplicationForm = () => {
         conviction: "",
       },
     },
+    mode: "all",
   });
+  const {
+    formState: { errors, isSubmitting, isValid },
+    handleSubmit,
+    trigger,
+  } = applicationFormData;
+
+  const isStepValid = () => {
+    const currentStepFields = steps[activeStep];
+    const currentStepErrors =
+      errors[currentStepFields as keyof ApplicationFormType];
+    return !currentStepErrors;
+  };
 
   const onSubmit: SubmitHandler<ApplicationFormType> = async (data) => {
     try {
@@ -90,20 +129,43 @@ export const ApplicationForm = () => {
   const renderFields = () => {
     switch (activeStep) {
       case 0:
-        return <PersonalDetailsForm />;
+        return <PersonalDetailsForm error={errors} />;
       case 1:
-        return <QualificationForm />;
+        return <QualificationForm error={errors} />;
       case 2:
-        return <HistoryForm />;
+        return <HistoryForm error={errors} />;
       case 3:
-        return <UniformAndLegalForm />;
+        return <UniformAndLegalForm error={errors} />;
       default:
         return null;
     }
   };
+
+  console.log({
+    errors,
+    isValid,
+  });
+
+  const handleNextStep = () => {
+    const stepValidationKeys = [
+      "personalDetails",
+      "qualification",
+      "experience",
+      "uniformAndLegal",
+    ];
+
+    trigger(stepValidationKeys[activeStep] as keyof ApplicationFormType).then(
+      (isValid) => {
+        if (isValid) {
+          setActiveStep((prevStep) => prevStep + 1);
+        }
+      }
+    );
+    // });
+  };
   return (
     <FormProvider {...applicationFormData}>
-      <form  onSubmit={applicationFormData.handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex  items-center flex-wrap md:flex-nowrap gap-4 md:gap-0  md:space-x-4 xl:space-x-10 w-full lg:mt-20 mb-[4.5em] ">
           {steps.map((step, index) => (
             <Step
@@ -137,23 +199,24 @@ export const ApplicationForm = () => {
           )}
           {activeStep === steps.length - 1 ? (
             <Button
-              text="Submit"
-              bgColor="bg-[#EBEBEB]"
+              text={isSubmitting ? "Submitting" : "Submit"}
+              // bgColor={!isValid ? "bg-[#EBEBEB]" : "bg-black"}
+              bgColor={"bg-black"}
               type="submit"
-              textColor="text-[#C0C0C0]"
-              // disabled
-              size="py-[6px] px-4  text-base "
+              // textColor={!isValid ? "text-[#C0C0C0]" : "text-white"}
+              textColor={"text-white"}
+              // disabled={!isValid}
+              size="py-[6px] px-4 text-base"
             />
           ) : (
             <div className="justify-self-end">
               <Button
-                onClick={() => {
-                  setActiveStep(activeStep + 1);
-                }}
+                onClick={handleNextStep}
                 text="Next"
-                bgColor="bg-[#000000]"
-                type={"button"}
-                textColor="text-[#FEFEFE]"
+                bgColor={!isStepValid() ? "bg-[#EBEBEB]" : "bg-black"}
+                type="button"
+                textColor={!isStepValid() ? "text-[#C0C0C0]" : "text-white"}
+                disabled={!isStepValid()}
                 icon={<FaArrowRightLong />}
                 size="py-[6px] px-4 outline outline-2 outline-black  text-base"
               />

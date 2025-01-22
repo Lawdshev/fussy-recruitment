@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
 import InputField from "../ui/button/input/input";
-import { ApplicationFormType } from "./formType";
+
 import Dropdown from "../ui/button/dropdown/dropdown";
 import FileUpload from "../ui/button/fileUpload/fileUpload";
 import { useFormContext } from "react-hook-form";
+import { ApplicationFormType } from "@/validation/applicationSchema";
+import { ApplicationFormErrorProps } from "./application";
 
-export const QualificationForm = () => {
+export const QualificationForm = ({ error }: ApplicationFormErrorProps) => {
   const { register, setValue, watch } = useFormContext<ApplicationFormType>();
 
   const cvValue = watch("qualification.cv");
@@ -21,20 +23,28 @@ export const QualificationForm = () => {
         <InputField
           label="Highest Qualification"
           {...register("qualification.highestQualification")}
+          required
+          error={error?.qualification?.highestQualification?.message}
         />
         <InputField
           label="Professional Certifcations"
           {...register("qualification.personalCertifications")}
+          required
+          error={error?.qualification?.personalCertifications?.message}
         />
 
         <InputField
           label="Years of Experience"
           {...register("qualification.yearsOfExperience")}
+          required
+          error={error?.qualification?.yearsOfExperience?.message}
         />
 
         <InputField
           label="Languages Spoken"
           {...register("qualification.spokenLanguages")}
+          required
+          error={error?.qualification?.spokenLanguages?.message}
         />
         <Dropdown
           defaultValue={ukWorkEligibilityValue}
@@ -56,15 +66,21 @@ export const QualificationForm = () => {
           onChange={(value) => {
             setValue("qualification.ukWorkEligibility", value);
           }}
+          required
+          error={error?.qualification?.ukWorkEligibility?.message}
         />
         <InputField
           label="Specialised Skills or Training"
           {...register("qualification.skillsOrTraining")}
+          required
+          error={error?.qualification?.skillsOrTraining?.message}
         />
       </div>
 
       <FileUpload
+        required
         defaultValue={cvValue}
+        formError={error?.qualification?.cv?.url?.message}
         onFileSelect={(file) => {
           setValue("qualification.cv", file);
         }}
@@ -73,17 +89,18 @@ export const QualificationForm = () => {
       />
 
       <FileUpload
+        required
         defaultValue={certificationValue}
+        formError={error?.qualification?.certification?.url?.message}
         label="Upload Certification  (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        // formFile={formValues.qualification.certification}
         onFileSelect={(file) => {
           setValue("qualification.certification", file);
         }}
       />
       <FileUpload
+        formError={error?.qualification?.otherDocument?.message}
         defaultValue={otherDocumentValue}
         label="Other Document (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
-        // formFile={formValues.qualification.otherDocument}
         onFileSelect={(file) => {
           setValue("qualification.otherDocument", file);
         }}

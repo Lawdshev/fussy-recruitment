@@ -5,14 +5,14 @@ import { LegalLabel } from "./legalLabel";
 import ImageUploadIcon from "@/assets/svgs/imageUploadIcon.svg";
 import { useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { ApplicationFormType } from "./formType";
 import { BiLoaderCircle, BiX } from "react-icons/bi";
-// import { CloudinaryUploadResponse } from "../ui/button/fileUpload/type";
+import { ApplicationFormType } from "@/validation/applicationSchema";
+import { ApplicationFormErrorProps } from "./application";
 
-export const UniformAndLegalForm = () => {
+export const UniformAndLegalForm = ({ error }: ApplicationFormErrorProps) => {
   const { setValue, watch } = useFormContext<ApplicationFormType>();
   const photo = watch("uniformAndLegal.photo");
-  const [error, setError] = useState<string>("");
+  const [uploadError, setUploadError] = useState<string>("");
 
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -41,13 +41,13 @@ export const UniformAndLegalForm = () => {
     const maxSize = 5 * 1024 * 1024; // 5MB
 
     if (!allowedTypes.includes(uploadedFile.type)) {
-      setError("Only PDF, PNG, and JPG formats are allowed.");
+      setUploadError("Only PDF, PNG, and JPG formats are allowed.");
       // setFile(null);
       return;
     }
 
     if (uploadedFile.size > maxSize) {
-      setError("File size must not exceed 5MB.");
+      setUploadError("File size must not exceed 5MB.");
       // setFile(null);
       return;
     }
@@ -66,13 +66,17 @@ export const UniformAndLegalForm = () => {
       }
     );
     const cloudImageData = await res.json();
-    setError("");
+    setUploadError("");
     setValue("uniformAndLegal.photo", cloudImageData);
     setIsUploading(false);
     // setFile(cloudImageData);
 
     // setFile(uploadedFile);
   };
+
+  console.log({
+    error,
+  });
 
   const uniformTypeForm = watch("uniformAndLegal.uniformType");
   const uniformSizeForm = watch("uniformAndLegal.uniformSize");
@@ -155,19 +159,25 @@ export const UniformAndLegalForm = () => {
             onDrop={handleDrop}
             onClick={handleClick}
           >
-            {photo && (
+            {photo.url && (
               <BiX
-                onClick={() => setValue("uniformAndLegal.photo", null)}
+                onClick={() =>
+                  setValue("uniformAndLegal.photo", {
+                    url: "",
+                    original_filename: "",
+                  })
+                }
                 size={24}
                 className="absolute -top-0 -right-0 z-50 cursor-pointer"
               />
             )}
-            {!photo ? (
+            {!photo.url ? (
               <>
                 {isUploading ? (
-                  <p>
+                  <div className="flex justify-center flex-col items-center space-y-2">
                     <BiLoaderCircle />
-                  </p>
+                    <p>uploading...</p>
+                  </div>
                 ) : (
                   <>
                     <Image src={ImageUploadIcon} alt={"upload icon"} />
@@ -205,8 +215,10 @@ export const UniformAndLegalForm = () => {
             )}
           </div>
         </div>
-        {error && (
-          <p className="mt-2 text-sm text-center text-red-500">{error}</p>
+        {(uploadError || error?.uniformAndLegal?.photo?.url) && (
+          <p className="mt-2 text-sm text-center text-red-500">
+            {error?.uniformAndLegal?.photo?.url?.message || uploadError}
+          </p>
         )}
       </div>
       <div className="border border-[#A7A7A9] p-8 rounded-lg flex flex-col space-y-10">

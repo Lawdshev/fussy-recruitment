@@ -21,3 +21,8 @@ export type CloudinaryUploadResponse = {
   access_mode: string;
   original_filename: string;
 };
+
+export type CloudinaryFileInfo = Pick<
+  CloudinaryUploadResponse,
+  "original_filename" | "url"
+>;

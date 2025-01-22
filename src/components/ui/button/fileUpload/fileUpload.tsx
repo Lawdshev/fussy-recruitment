@@ -3,20 +3,24 @@ import Image from "next/image";
 import React, { useRef, useState } from "react";
 import UploadIcon from "@/assets/svgs/uploadIcon.svg";
 import { BiLoaderCircle, BiTrash } from "react-icons/bi";
-import { CloudinaryUploadResponse } from "./type";
+import { CloudinaryFileInfo } from "./type";
 
 interface FileUploadProps {
-  onFileSelect?: (data: CloudinaryUploadResponse) => void;
+  onFileSelect?: (data: CloudinaryFileInfo) => void;
   label: string;
-  defaultValue: CloudinaryUploadResponse | null;
+  defaultValue?: { url: string; original_filename: string } | null;
+  formError?: string;
+  required?: boolean;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({
   onFileSelect,
   label,
   defaultValue,
+  required,
+  formError,
 }) => {
-  const [file, setFile] = useState<CloudinaryUploadResponse | null>(
+  const [file, setFile] = useState<CloudinaryFileInfo | null | undefined>(
     defaultValue
   );
   const [isUploading, setIsUploading] = useState(false);
@@ -54,13 +58,19 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
     if (!allowedTypes.includes(uploadedFile.type)) {
       setError("Only PDF, DOC, and DOCX formats are allowed.");
-      setFile(null);
+      setFile({
+        url: "",
+        original_filename: "",
+      });
       return;
     }
 
     if (uploadedFile.size > maxSize) {
       setError("File size must not exceed 5MB.");
-      setFile(null);
+      setFile({
+        url: "",
+        original_filename: "",
+      });
       return;
     }
 
@@ -102,12 +112,13 @@ const FileUpload: React.FC<FileUploadProps> = ({
         onDrop={handleDrop}
         onClick={handleClick}
       >
-        {!file ? (
+        {!file?.url ? (
           <>
             {isUploading ? (
-              <p>
+              <div className="flex justify-center flex-col items-center space-y-2">
                 <BiLoaderCircle />
-              </p>
+                <p>uploading...</p>
+              </div>
             ) : (
               <>
                 <Image src={UploadIcon} alt={"upload icon"} />
@@ -120,6 +131,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 </p>
                 <input
                   type="file"
+                  required={required}
                   className="hidden"
                   ref={fileInputRef}
                   onChange={handleFileUpload}
@@ -134,11 +146,20 @@ const FileUpload: React.FC<FileUploadProps> = ({
               <p>{file?.original_filename}</p>
               <p className="text-green-500">File uploaded successfully!</p>
             </div>
-            <BiTrash onClick={() => setFile(null)} />
+            <BiTrash
+              onClick={() =>
+                setFile({
+                  url: "",
+                  original_filename: "",
+                })
+              }
+            />
           </div>
         )}
       </div>
-      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+      {(error || formError) && (
+        <p className="mt-2 text-sm text-red-500">{error || formError}</p>
+      )}
     </div>
   );
 };
