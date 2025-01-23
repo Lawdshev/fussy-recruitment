@@ -74,10 +74,6 @@ export const UniformAndLegalForm = ({ error }: ApplicationFormErrorProps) => {
     // setFile(uploadedFile);
   };
 
-  console.log({
-    error,
-  });
-
   const uniformTypeForm = watch("uniformAndLegal.uniformType");
   const uniformSizeForm = watch("uniformAndLegal.uniformSize");
   const fitnessForm = watch("uniformAndLegal.fitness");
@@ -168,13 +164,13 @@ export const UniformAndLegalForm = ({ error }: ApplicationFormErrorProps) => {
                   })
                 }
                 size={24}
-                className="absolute -top-0 -right-0 z-50 cursor-pointer"
+                className="absolute -top-0 -right-0 z-50 cursor-pointer text-primary-text"
               />
             )}
             {!photo.url ? (
               <>
                 {isUploading ? (
-                  <div className="flex justify-center flex-col items-center space-y-2">
+                  <div className="flex justify-center flex-col items-center space-y-2 text-primary-text">
                     <BiLoaderCircle />
                     <p>uploading...</p>
                   </div>

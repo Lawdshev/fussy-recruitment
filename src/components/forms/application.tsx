@@ -101,7 +101,14 @@ export const ApplicationForm = () => {
     formState: { errors, isSubmitting, isValid },
     handleSubmit,
     trigger,
+    getValues,
   } = applicationFormData;
+
+  const formValues = getValues();
+
+  console.log({ formValues });
+
+  console.log({ formValues });
 
   const isStepValid = () => {
     const currentStepFields = steps[activeStep];

@@ -1,12 +1,14 @@
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import InputField from "../ui/button/input/input";
 import { BiX } from "react-icons/bi";
 import { ApplicationFormType } from "@/validation/applicationSchema";
 import { FaPlus } from "react-icons/fa";
 import { ApplicationFormErrorProps } from "./application";
+import { DatePickerInput } from "../ui/button/datepicker/datepicker";
 
 export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
-  const { register, watch } = useFormContext<ApplicationFormType>();
+  const { register, watch, control } = useFormContext<ApplicationFormType>();
+
   const {
     fields: histories,
     append: appendHistories,
@@ -26,6 +28,7 @@ export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
 
   const watchHistoryFieldArray = watch("experience.history");
   const watchReferenceFieldArray = watch("experience.reference");
+
   const controlledHistoryFields = histories.map((field, index) => {
     return {
       ...field,
@@ -64,6 +67,10 @@ export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
     removeReference(index);
   };
 
+  console.log({
+    isCurrent: watchHistoryFieldArray[0].isCurrentWork,
+  });
+
   return (
     <div className="flex flex-col space-y-4 w-full ">
       <div className="flex justify-between items-center mb-8">
@@ -85,12 +92,22 @@ export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
             key={index}
           >
             <div>
-              <InputField
-                type="date"
-                label="Date From"
-                {...register(`experience.history.${index}.dateFrom`)}
-                required
-                error={error?.experience?.history?.[index]?.dateFrom?.message}
+              <Controller
+                name={`experience.history.${index}.dateFrom`}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <DatePickerInput
+                      label="Date From"
+                      required
+                      error={
+                        error?.experience?.history?.[index]?.dateFrom?.message
+                      }
+                      onChange={(date) => field.onChange(date)}
+                      selected={field.value ? new Date(field.value) : null}
+                    />
+                  );
+                }}
               />
               <span className="flex space-x-2 items-center text-sm text-primary-text mt-2 ">
                 <span>
@@ -103,13 +120,26 @@ export const HistoryForm = ({ error }: ApplicationFormErrorProps) => {
                 <p>I am currently doing this job</p>{" "}
               </span>
             </div>
-            <InputField
-              label="Date To"
-              type="date"
-              required
-              {...register(`experience.history.${index}.dateTo`)}
-              error={error?.experience?.history?.[index]?.dateTo?.message}
-            />
+
+            {!watchHistoryFieldArray[index].isCurrentWork && (
+              <Controller
+                name={`experience.history.${index}.dateTo`}
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <DatePickerInput
+                      label="Date To"
+                      required
+                      error={
+                        error?.experience?.history?.[index]?.dateTo?.message
+                      }
+                      onChange={(date) => field.onChange(date)}
+                      selected={field.value ? new Date(field.value) : null}
+                    />
+                  );
+                }}
+              />
+            )}
 
             <InputField
               label="Name of Employer"

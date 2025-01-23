@@ -9,7 +9,8 @@ import { ApplicationFormType } from "@/validation/applicationSchema";
 import { ApplicationFormErrorProps } from "./application";
 
 export const QualificationForm = ({ error }: ApplicationFormErrorProps) => {
-  const { register, setValue, watch } = useFormContext<ApplicationFormType>();
+  const { register, setValue, watch, clearErrors } =
+    useFormContext<ApplicationFormType>();
 
   const cvValue = watch("qualification.cv");
   const certificationValue = watch("qualification.certification");
@@ -65,6 +66,9 @@ export const QualificationForm = ({ error }: ApplicationFormErrorProps) => {
           ]}
           onChange={(value) => {
             setValue("qualification.ukWorkEligibility", value);
+            if (value) {
+              clearErrors("qualification.ukWorkEligibility");
+            }
           }}
           required
           error={error?.qualification?.ukWorkEligibility?.message}
@@ -83,6 +87,9 @@ export const QualificationForm = ({ error }: ApplicationFormErrorProps) => {
         formError={error?.qualification?.cv?.url?.message}
         onFileSelect={(file) => {
           setValue("qualification.cv", file);
+          if (file) {
+            clearErrors("qualification.cv");
+          }
         }}
         label=" Upload CV (The file must not exceed 5MB and must be in the accepted formats:
               PDF, DOC, or DOCX)"
@@ -95,14 +102,20 @@ export const QualificationForm = ({ error }: ApplicationFormErrorProps) => {
         label="Upload Certification  (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
         onFileSelect={(file) => {
           setValue("qualification.certification", file);
+          if (file) {
+            clearErrors("qualification.certification");
+          }
         }}
       />
       <FileUpload
-        formError={error?.qualification?.otherDocument?.message}
+        formError={error?.qualification?.otherDocument?.url?.message}
         defaultValue={otherDocumentValue}
         label="Other Document (The file must not exceed 5MB and must be in the accepted formats: PDF, DOC, or DOCX)"
         onFileSelect={(file) => {
           setValue("qualification.otherDocument", file);
+          if (file) {
+            clearErrors("qualification.otherDocument");
+          }
         }}
       />
     </div>

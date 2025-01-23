@@ -34,26 +34,28 @@ export const applicationFormValidationSchema = Yup.object().shape({
     ukWorkEligibility: Yup.string().required("UK work eligibility is required"),
     skillsOrTraining: Yup.string().required("Skills or training is required"),
     cv: Yup.object()
-      .required("upload CV document")
+      .required("Upload CV document")
       .shape({
         url: Yup.string().url("Invalid CV URL").required("upload CV document"),
         original_filename: Yup.string().required("CV public ID is required"),
       }),
 
     certification: Yup.object()
-      .required("upload certificate document")
+      .required("Upload certificate document")
       .shape({
         url: Yup.string()
           .url("Invalid certification URL")
-          .required("upload certificate document"),
+          .required("Upload certificate document"),
         original_filename: Yup.string().required(
           "Certification public ID is required"
         ),
       }),
     otherDocument: Yup.object()
-      .nullable()
+      .required("Upload other document")
       .shape({
-        url: Yup.string().url("Invalid document URL").required(),
+        url: Yup.string()
+          .url("Invalid document URL")
+          .required("Upload other document"),
         original_filename: Yup.string().required(),
       }),
   }),

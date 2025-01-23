@@ -7,7 +7,7 @@ import { ApplicationFormType } from "@/validation/applicationSchema";
 import { ApplicationFormErrorProps } from "./application";
 
 export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
-  const { register, setValue, getValues } =
+  const { register, setValue, getValues, clearErrors } =
     useFormContext<ApplicationFormType>();
   const formValues = getValues();
 
@@ -49,7 +49,7 @@ export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
           label="Phone number"
           {...register("personalDetails.phoneNumber")}
           required
-          error={error?.personalDetails?.email?.message}
+          error={error?.personalDetails?.phoneNumber?.message}
         />
         <InputField
           label="House Name or Number"
@@ -59,7 +59,7 @@ export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
           label="Street Address"
           {...register("personalDetails.streetAddress")}
           required
-          error={error?.personalDetails?.email?.message}
+          error={error?.personalDetails?.streetAddress?.message}
         />
         <InputField label="City" {...register("personalDetails.city")} />
         <InputField
@@ -89,9 +89,12 @@ export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
           ]}
           onChange={(value) => {
             setValue("personalDetails.positionOfInterest", value);
+            if (value) {
+              clearErrors("personalDetails.positionOfInterest");
+            }
           }}
           defaultValue={formValues.personalDetails.positionOfInterest}
-          error={error?.personalDetails?.email?.message}
+          error={error?.personalDetails?.positionOfInterest?.message}
         />
         <Dropdown
           label="Availability"
@@ -111,10 +114,13 @@ export const PersonalDetailsForm = ({ error }: ApplicationFormErrorProps) => {
           ]}
           onChange={(value) => {
             setValue("personalDetails.availability", value);
+            if (value) {
+              clearErrors("personalDetails.availability");
+            }
           }}
           defaultValue={formValues.personalDetails.availability}
           required
-          error={error?.personalDetails?.email?.message}
+          error={error?.personalDetails?.availability?.message}
         />
       </div>
     </div>
